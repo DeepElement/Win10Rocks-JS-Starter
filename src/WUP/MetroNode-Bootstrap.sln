@@ -8,9 +8,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MetroNode-Bootstrap-Shared", "..\MetroNode-Bootstrap-Shared\MetroNode-Bootstrap-Shared.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\MetroNode-Bootstrap-Shared\MetroNode-Bootstrap-Shared.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
