@@ -1,8 +1,10 @@
 {
-  "name": "someProj",
+  "name": "MetroNode-Bootstrap",
   "version": "0.0.0",
   "description": "",
   "scripts": { },
   "author": "",
-  "license": ""
+  "license": "",
+  "dependencies": {
+  }
 }

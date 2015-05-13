@@ -6,9 +6,14 @@
     <SharedGUID>e5ff94e5-80a7-4518-aca9-84fa90d52999</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
-    <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\network.node.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)sdk\model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)sdk\view-model\" />
+    <Folder Include="$(MSBuildThisFileDirectory)sdk\service\" />
+    <Folder Include="$(MSBuildThisFileDirectory)sdk\provider\" />
   </ItemGroup>
 </Project>
