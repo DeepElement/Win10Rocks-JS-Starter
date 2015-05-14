@@ -1,18 +1,19 @@
-﻿exports.load = function () {
-
-
-
+﻿exports.load = function (done) {
     console.log("Main:load");
+    return done();
 }
 
-exports.unload = function () {
+exports.unload = function (done) {
     console.log("Main:unload");
+    return done();
 }
 
-exports.pause = function () {
+exports.pause = function (done) {
     console.log("Main:pause");
+    return done();
 }
 
-exports.resume = function () {
+exports.resume = function (done) {
     console.log("Main:resume");
+    return done();
 }

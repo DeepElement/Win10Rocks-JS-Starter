@@ -17,24 +17,14 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="integration\main-tests.js">
-      <SubType>Code</SubType>
+    <Compile Include="integration\sdk\main.js">
       <TestFramework>Mocha</TestFramework>
-    </Compile>
-    <Compile Include="..\src\Shared\sdk\**">
-      <SubType>Code</SubType>
-      <Link>sdk\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Compile>
     <Compile Include="resolver.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="integration" />
-    <Folder Include="sdk\" />
-    <Folder Include="sdk\helper\" />
-    <Folder Include="sdk\provider\" />
-    <Folder Include="sdk\service\" />
-    <Folder Include="sdk\view-model\" />
-    <Folder Include="sdk\view\" />
+    <Folder Include="integration\" />
+    <Folder Include="integration\sdk\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
