@@ -7,6 +7,8 @@ Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "MetroNode-Bootstrap-WUP", "
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MetroNode-Bootstrap-Shared", "Shared\MetroNode-Bootstrap-Shared.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "MetroNode-Bootstrap-Tests", "..\test\MetroNode-Bootstrap-Tests.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\MetroNode-Bootstrap-Shared.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
@@ -47,6 +49,22 @@ Global
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.ActiveCfg = Release|x86
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.Build.0 = Release|x86
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.Deploy.0 = Release|x86
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

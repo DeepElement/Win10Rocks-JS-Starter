@@ -6,14 +6,25 @@
     <SharedGUID>e5ff94e5-80a7-4518-aca9-84fa90d52999</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
-    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\network.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\class.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\ioc.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\provider\logging.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\service\base.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\service\navigation.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\base.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\home.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\login.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)sdk\model\" />
-    <Folder Include="$(MSBuildThisFileDirectory)sdk\view-model\" />
-    <Folder Include="$(MSBuildThisFileDirectory)sdk\service\" />
-    <Folder Include="$(MSBuildThisFileDirectory)sdk\provider\" />
   </ItemGroup>
 </Project>

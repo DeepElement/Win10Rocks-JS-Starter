@@ -14,9 +14,11 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
+                MetroNode.sdk.main.load();
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
+                MetroNode.sdk.main.resume();
             }
 
             nav.history = app.sessionState.history || {};
@@ -42,6 +44,7 @@
         // complete an asynchronous operation before your application is 
         // suspended, call args.setPromise().
         app.sessionState.history = nav.history;
+        MetroNode.sdk.main.pause();
     };
 
     app.start();
