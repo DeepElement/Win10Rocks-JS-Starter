@@ -13,7 +13,7 @@
     <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\class.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)sdk\ioc.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\ioc.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\provider\logging.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\service\base.node.js" />
@@ -23,8 +23,5 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\login.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)sdk\model\" />
   </ItemGroup>
 </Project>

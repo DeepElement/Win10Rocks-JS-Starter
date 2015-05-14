@@ -21,10 +21,16 @@
       <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="resolver.js" />
+    <Compile Include="unit\helper\ioc.js">
+      <SubType>Code</SubType>
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="integration\" />
     <Folder Include="integration\sdk\" />
+    <Folder Include="unit\" />
+    <Folder Include="unit\helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
