@@ -45,16 +45,17 @@
         scope[method] = baseViewOverrides[method];
     }
 
-	// Extend scope to allow framwork override
+    // Extend scope to allow framwork override
     scope._viewModel = {};
     scope.viewModel = {
-		get: function () {
-			return this._viewModel;
-		},
-		set: function (val) {
-			this._viewModel = val;
-		}
+        get: function () {
+            return this._viewModel;
+        },
+        set: function (val) {
+            this._viewModel = val;
+        }
     };
 
-    WinJS.UI.Pages.define(template, scope);
+    var viewClazz = WinJS.UI.Pages.define(template, scope);
+    WinJS.Class.mix(viewClazz, WinJS.Utilities.eventMixin);
 }

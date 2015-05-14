@@ -1,16 +1,17 @@
-﻿var baseViewModel = require('./base.node.js');
+﻿var loggingProvider = require('../provider/logging.node');
 
 // Constructor
 function LoginViewModel(options) {
-    // always initialize all instance properties
-    baseViewModel.apply(this, Array.prototype.slice.call(arguments));
+    loggingProvider.log("HomeViewModel:created");
 }
-LoginViewModel.prototype = new baseViewModel();
 
-// class methods
-LoginViewModel.prototype.customMethod = function () {
-    baseViewModel.prototype.customMethod.call(this, Array.prototype.slice.call(arguments));
+var instanceMembers = {
+
 };
 
-// export the class
-module.exports = LoginViewModel;
+var staticMembers = {
+
+};
+
+module.exports = WinJS.Class.derive(require('./base.node'),
+    LoginViewModel, instanceMembers, staticMembers);

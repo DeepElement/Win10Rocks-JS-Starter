@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "MetroNode-Bootstrap-WUP", "WUP\MetroNode-Bootstrap-WUP.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "MetroNode-Bootstrap-WUP", "src\WUP\MetroNode-Bootstrap-WUP.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MetroNode-Bootstrap-Shared", "Shared\MetroNode-Bootstrap-Shared.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MetroNode-Bootstrap-Shared", "src\Shared\MetroNode-Bootstrap-Shared.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "MetroNode-Bootstrap-Tests", "..\test\MetroNode-Bootstrap-Tests.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "MetroNode-Bootstrap-Tests", "test\MetroNode-Bootstrap-Tests.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared\MetroNode-Bootstrap-Shared.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
-		Shared\MetroNode-Bootstrap-Shared.projitems*{e5ff94e5-80a7-4518-aca9-84fa90d52999}*SharedItemsImports = 13
+		src\Shared\MetroNode-Bootstrap-Shared.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
+		src\Shared\MetroNode-Bootstrap-Shared.projitems*{e5ff94e5-80a7-4518-aca9-84fa90d52999}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
