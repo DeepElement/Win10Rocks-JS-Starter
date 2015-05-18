@@ -23,5 +23,12 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\login.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\css\ui-dark.css" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\css\ui-light.css" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\fonts\Symbols.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\en-US\ui.strings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.intellisense-setup.js" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.intellisense.js" />
+    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.js" />
   </ItemGroup>
 </Project>
