@@ -1,5 +1,6 @@
 ﻿exports.load = function (done) {
     console.log("Main:load");
+    console.log(window.process.env);
     return done();
 }
 
