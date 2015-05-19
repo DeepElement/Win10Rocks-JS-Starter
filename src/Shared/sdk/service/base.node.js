@@ -6,10 +6,10 @@ var members = {
     load: function () {
 
     },
-    pause: function(){
+    pause: function () {
 
     },
-    resume: function(){
+    resume: function () {
 
     },
     unload: function () {
