@@ -6,15 +6,16 @@
     <SharedGUID>e5ff94e5-80a7-4518-aca9-84fa90d52999</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.css" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.js" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.css" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.html" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)views\home\home.css" />
+    <Content Include="$(MSBuildThisFileDirectory)views\home\home.html" />
+    <Content Include="$(MSBuildThisFileDirectory)views\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)views\settings\settings.css" />
+    <Content Include="$(MSBuildThisFileDirectory)views\settings\settings.html" />
+    <Content Include="$(MSBuildThisFileDirectory)views\settings\settings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)views\splash\splash.css" />
+    <Content Include="$(MSBuildThisFileDirectory)views\splash\splash.html" />
+    <Content Include="$(MSBuildThisFileDirectory)views\splash\splash.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\class.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\ioc.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />

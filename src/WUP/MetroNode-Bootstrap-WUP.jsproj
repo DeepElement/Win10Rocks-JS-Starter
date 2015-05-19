@@ -65,7 +65,6 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="css\default.css" />
     <Content Include="js\default.js" />
-    <Content Include="js\navigator.js" />
     <Content Include="packages.config" />
     <None Include="MetroNode-Bootstrap-WUP_TemporaryKey.pfx" />
   </ItemGroup>
