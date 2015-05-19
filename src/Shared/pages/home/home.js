@@ -8,6 +8,9 @@
                 document.querySelector("#navToSplash").onclick = function (args) {
                     WinJS.Navigation.navigate("/pages/splash/splash.html", "test value");
                 };
+                document.querySelector("#navToSettings").onclick = function (args) {
+                    WinJS.Navigation.navigate("/pages/settings/settings.html", "test value");
+                };
             }
         });
 })();

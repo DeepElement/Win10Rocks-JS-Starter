@@ -9,6 +9,9 @@
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\splash\splash.js" />
@@ -21,6 +24,7 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\base.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\home.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\login.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\settings.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\css\ui-dark.css" />
