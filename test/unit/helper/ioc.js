@@ -1,4 +1,4 @@
-﻿var common = require('../../common'),
+﻿var common = require('../common'),
     assert = require('assert'),
     should = require('should'),
     resolver = require('../../resolver');

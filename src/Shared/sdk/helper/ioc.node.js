@@ -9,9 +9,6 @@ var _validateScope = function (scope) {
 }
 
 exports.register = function (clazz, scope) {
-    if (_registery[clazz])
-        throw new Error("Instance " + clazz + " is already registered");
-
     _validateScope(scope);
 
     _registery[clazz] = {

@@ -17,7 +17,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="common.js" />
+    <Compile Include="integration\common.js" />
+    <Compile Include="unit\common.js" />
     <Compile Include="integration\sdk\main.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
