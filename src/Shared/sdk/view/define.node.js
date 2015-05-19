@@ -1,9 +1,16 @@
-﻿module.exports = function (template, viewModelType, scope) {
+﻿var ioc = require('../main.node').ioc;
+
+module.exports = function (template, viewModelType, scope) {
     var baseViewOverrides = {
         init: function (element, options) {
             this.element = element;
 
             // TODO: Locate the VM from history based on Navigation url
+            var navigationService = ioc.get(require("../service/navigation.node"));
+
+            navigationService.getViewModelFromUri();
+
+
             if (!this._viewModel || !this._viewModel.key)
                 this.viewModel = new viewModelType();
 
