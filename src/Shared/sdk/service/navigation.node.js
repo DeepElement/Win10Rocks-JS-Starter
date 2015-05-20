@@ -1,4 +1,6 @@
-﻿var navigationService = function (options) {
+﻿var classHelper = require('../helper/class.node');
+
+var navigationService = function (options) {
     this._contextStack = [];
 }
 
@@ -25,4 +27,4 @@ var staticMembers = {
 
 }
 
-module.exports = WinJS.Class.derive(require('./base.node'), navigationService, members, staticMembers);
+module.exports = classHelper.derive(require('./base.node'), navigationService, members, staticMembers);

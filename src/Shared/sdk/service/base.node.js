@@ -1,4 +1,6 @@
-﻿var baseService = function (options) {
+﻿var classHelper = require('../helper/class.node');
+
+var baseService = function (options) {
 
 }
 
@@ -21,4 +23,4 @@ var staticMembers = {
 
 }
 
-module.exports = WinJS.Class.define(baseService, members, staticMembers);
+module.exports = classHelper.define(baseService, members, staticMembers);

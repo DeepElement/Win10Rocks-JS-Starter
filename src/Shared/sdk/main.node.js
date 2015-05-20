@@ -1,9 +1,20 @@
-﻿require('./setup.node');
+﻿var async = require('async');
+
+require('./helper/runtime.node');
+require('./setup.node');
 
 exports.load = function (done) {
     console.log("Main:load");
+    var services = [
+        exports.ioc.get(require('./service/navigation.node')),
+        exports.ioc.get(require('./service/message.node'))
+    ];
 
-    return done();
+    async.each(services,
+        function (item, itemCb) {
+            item.load(itemCb);
+        },
+        done);
 }
 
 exports.unload = function (done) {

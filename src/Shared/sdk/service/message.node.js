@@ -1,4 +1,6 @@
-﻿var messageService = function (options) {
+﻿var classHelper = require('../helper/class.node');
+
+var messageService = function (options) {
     this._registry = [];
     this._messageStack = [];
 }
@@ -100,7 +102,4 @@ var staticMembers = {
 
 }
 
-var definition = WinJS.Class.derive(require('./base.node'), messageService, members, staticMembers);
-WinJS.Class.mix(definition, WinJS.Utilities.eventMixin);
-
-module.exports = definition;
+module.exports = classHelper.derive(require('./base.node'), messageService, members, staticMembers);
