@@ -5,12 +5,8 @@ require('./setup.node');
 
 exports.load = function (done) {
     console.log("Main:load");
-    var services = [
-        exports.ioc.get(require('./service/navigation.node')),
-        exports.ioc.get(require('./service/message.node'))
-    ];
 
-    async.each(services,
+    async.each(exports.getAllServices(),
         function (item, itemCb) {
             item.load(itemCb);
         },
@@ -19,17 +15,39 @@ exports.load = function (done) {
 
 exports.unload = function (done) {
     console.log("Main:unload");
-    return done();
+
+    async.each(exports.getAllServices(),
+        function (item, itemCb) {
+            item.unload(itemCb);
+        },
+        done);
 }
 
 exports.pause = function (done) {
     console.log("Main:pause");
-    return done();
+
+    async.each(exports.getAllServices(),
+    function (item, itemCb) {
+        item.pause(itemCb);
+    },
+    done);
 }
 
 exports.resume = function (done) {
     console.log("Main:resume");
-    return done();
+
+    async.each(exports.getAllServices(),
+        function (item, itemCb) {
+            item.resume(itemCb);
+        },
+        done);
 }
 
 exports.ioc = require('./helper/ioc.node');
+
+exports.getAllServices = function () {
+    return [
+        exports.ioc.get(MetroNode.sdk.service.message),
+        exports.ioc.get(MetroNode.sdk.service.navigation)
+    ];
+}
