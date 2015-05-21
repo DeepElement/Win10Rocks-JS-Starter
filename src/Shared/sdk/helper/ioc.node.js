@@ -18,6 +18,19 @@ exports.register = function (clazz, scope) {
     };
 }
 
+exports.getAllInstances = function () {
+    var results = [];
+    for (var registryKey in _registery) {
+        var instance = _registery[registryKey];
+        if (instance) {
+            instance.instances.forEach(function (i) {
+                results.push(i);
+            });
+        }
+    }
+    return results;
+}
+
 exports.get = function (clazz) {
     if (!_registery[clazz])
         throw new Error("Instance " + clazz + " is not registered");

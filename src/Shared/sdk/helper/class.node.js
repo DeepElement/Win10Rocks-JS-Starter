@@ -1,5 +1,5 @@
-﻿exports.define = function (constructor, memebers, staticMembers) {
-    return WinJS.Class.define(constructor, memebers, staticMembers);
+﻿exports.define = function (constructor, members, staticMembers) {
+    return WinJS.Class.define(constructor, members, staticMembers);
 }
 
 exports.derive = function (superClazz, constructor, members, staticMembers) {
@@ -20,6 +20,5 @@ exports.derive = function (superClazz, constructor, members, staticMembers) {
             members[prop] = superClazz.prototype[prop];
     });
 
-    var clazz = WinJS.Class.derive(superClazz, constructor, members, staticMembers);
-    return clazz;
+    return WinJS.Class.derive(superClazz, constructor, members, staticMembers);
 }

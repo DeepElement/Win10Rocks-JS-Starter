@@ -13,10 +13,12 @@ var instanceMembers = {
         set: function (val) {
             this._data = val;
             this.dispatchEvent('data');
+            this.onDataSet();
         }
     },
     onDataSet: function () {
         loggingProvider.log("BaseViewModel:onDataSet");
+        this.dispatchEvent('loaded');
     }
 }
 

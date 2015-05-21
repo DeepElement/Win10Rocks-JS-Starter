@@ -1,4 +1,6 @@
-﻿var classHelper = require('../helper/class.node');
+﻿var classHelper = require('../helper/class.node'),
+    main = require('../main.node'),
+    async = require('async');
 
 var messageService = function (options) {
     this._registry = [];
@@ -92,7 +94,11 @@ var members = {
                     item_callback();
                 },
                 function () {
-                    // TODO: AOP Broadcast
+                    // AOP Broadcast
+                    main.ioc.getAllInstances().forEach(function (component) {
+                        if (component["on" + messageType])
+                            component["on" + messageType](messageType, args);
+                    });
                 });
         }
     }

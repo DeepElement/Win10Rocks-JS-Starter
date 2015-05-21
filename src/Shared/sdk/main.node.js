@@ -1,6 +1,5 @@
 ﻿var async = require('async');
 
-require('./helper/runtime.node');
 require('./setup.node');
 
 exports.load = function (done) {
@@ -10,7 +9,9 @@ exports.load = function (done) {
         function (item, itemCb) {
             item.load(itemCb);
         },
-        done);
+        function (err) {
+            return done(err);
+        });
 }
 
 exports.unload = function (done) {
@@ -20,7 +21,9 @@ exports.unload = function (done) {
         function (item, itemCb) {
             item.unload(itemCb);
         },
-        done);
+        function (err) {
+            return done(err);
+        });
 }
 
 exports.pause = function (done) {
@@ -50,4 +53,11 @@ exports.getAllServices = function () {
         exports.ioc.get(MetroNode.sdk.service.message),
         exports.ioc.get(MetroNode.sdk.service.navigation)
     ];
+}
+
+exports.getServiceByName = function (name) {
+    if (MetroNode.sdk.service[name]) {
+        return exports.ioc.get(MetroNode.sdk.service[name]);
+    }
+    return null;
 }

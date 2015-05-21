@@ -24,3 +24,4 @@ var staticMembers = {
 }
 
 module.exports = classHelper.define(baseService, members, staticMembers);
+WinJS.Class.mix(module.exports, WinJS.Utilities.eventMixin);

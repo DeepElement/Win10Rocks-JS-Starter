@@ -1,25 +1,44 @@
-﻿var classHelper = require('../helper/class.node');
+﻿var classHelper = require('../helper/class.node'),
+    main = require('../main.node'),
+    base = require('./base.node');
 
 var navigationService = function (options) {
-    this._contextStack = [];
+
 }
 
 var members = {
-    getViewModelFromUri: function (uri) {
-        // TODO: recover View Model instance
-        return null;
+    load: function (done) {
+        var that = this;
+        base.prototype.load.call(this, function () {
+            return done();
+        });
     },
 
-    navigate: function (uri) {
-        // TODO: navigate to URI
+    unload: function (done) {
+        return done();
     },
 
-    currentContext: {
-        get: function () {
-            if (this._contextStack && this._contextStack.length > 0)
-                return this._contextStack.peek();
-            return null;
+    onNavigateToMessage: function (messageType, args) {
+        var viewKey = args.viewKey || null;
+        if (viewKey) {
+            viewKey = viewKey.toLowerCase();
+            WinJS.Navigation.navigate("/view/" + viewKey + "/" + viewKey + ".html", args.state);
         }
+    },
+
+    onNavigatedMessage: function (messageType, args) {
+        console.log({
+            type: "onNavigated",
+            args: args
+        });
+        args.viewModel.data = args.state;
+    },
+
+    onNavigatingMessage: function (messageType, args) {
+        console.log({
+            type: "onNavigating",
+            args: args
+        });
     }
 }
 
@@ -27,4 +46,4 @@ var staticMembers = {
 
 }
 
-module.exports = classHelper.derive(require('./base.node'), navigationService, members, staticMembers);
+module.exports = classHelper.derive(base, navigationService, members, staticMembers);

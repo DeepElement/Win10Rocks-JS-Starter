@@ -6,7 +6,9 @@ function HomeViewModel(options) {
 }
 
 var instanceMembers = {
-
+    onDataSet: function () {
+        this.dispatchEvent('loaded');
+    }
 };
 
 var staticMembers = {
