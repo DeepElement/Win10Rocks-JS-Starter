@@ -1,6 +1,6 @@
 ﻿exports.setTimeout = function (delegate, duration) {
     var _self = this;
-    return setTimeout(function () {
+    return window.setTimeout(function () {
         if (!_self.pendingDispose) {
             return delegate();
         }

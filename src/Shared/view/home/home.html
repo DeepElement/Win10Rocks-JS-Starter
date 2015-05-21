@@ -15,11 +15,9 @@
             <h1 class="titlearea win-type-ellipsis">
                 <span class="pagetitle">Home Screen</span>
             </h1>
-            <button data-win-control="WinJS.UI.BackButton"></button>
         </header>
         <section aria-label="Main content" role="main">
-            <button id="navToSplash">go to Splash</button>
-            <button id="navToSettings">go to Settings</button>
+            <button data-win-bind="onclick: navigateToSettingsCommand Binding.Mode.Command" class="win-command-disabled">go to Settings</button>
         </section>
     </div>
 </body>

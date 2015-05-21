@@ -1,9 +1,11 @@
-﻿var loggingProvider = require('../provider/logging.node');
+﻿var loggingProvider = require('../provider/logging.node'),
+    main = require("../main.node");
 
 // Constructor
 function BaseViewModel(options) {
     loggingProvider.log("BaseViewModel:Constructor");
 }
+
 // class methods
 var instanceMembers = {
     data: {
@@ -18,7 +20,18 @@ var instanceMembers = {
     },
     onDataSet: function () {
         loggingProvider.log("BaseViewModel:onDataSet");
-        this.dispatchEvent('loaded');
+
+
+        // TODO: Catch view load timeouts
+        /*windowHelper.setTimeout(function () {
+            if (!that._onDataLoadedFlag) {
+                var messageService = main.ioc.getService("message");
+                messageService.send("NavigateToMessage", {
+                    viewKey: "error",
+                    errorKey: "view-load-timeout"
+                });
+            }
+        }, config.get("behaviors:viewLoadTimeout"));*/
     }
 }
 

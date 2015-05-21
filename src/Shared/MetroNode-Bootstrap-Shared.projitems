@@ -7,8 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)control\navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\command\relay.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\config.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\window.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\winjs.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.html" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.js" />
@@ -28,7 +30,6 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\setup.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\base.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\home.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\login.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\settings.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />

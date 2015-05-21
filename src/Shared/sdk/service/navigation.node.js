@@ -22,23 +22,18 @@ var members = {
         var viewKey = args.viewKey || null;
         if (viewKey) {
             viewKey = viewKey.toLowerCase();
-            WinJS.Navigation.navigate("/view/" + viewKey + "/" + viewKey + ".html", args.state);
+            WinJS.Navigation.navigate("/view/" + viewKey + "/" + viewKey + ".html", {
+                viewKey: viewKey,
+                state: args.state
+            });
         }
     },
 
     onNavigatedMessage: function (messageType, args) {
-        console.log({
-            type: "onNavigated",
-            args: args
-        });
         args.viewModel.data = args.state;
     },
 
     onNavigatingMessage: function (messageType, args) {
-        console.log({
-            type: "onNavigating",
-            args: args
-        });
     }
 }
 

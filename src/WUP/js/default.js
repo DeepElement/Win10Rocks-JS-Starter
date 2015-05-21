@@ -53,5 +53,18 @@
         });
     };
 
+    app.onerror = function (e) {
+        debugger
+        var message = e.detail.message;
+        var description = e.detail.description;
+        var code = e.detail.number;
+        var stackTrace = e.detail.stack;
+        var msgBox = new Windows.UI.Popups.MessageDialog(
+            description, e.detail.errorMessage
+            );
+        msgBox.showAsync().done();
+        return true;
+    };
+
     app.start();
 })();

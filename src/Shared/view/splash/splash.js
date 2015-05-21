@@ -8,12 +8,11 @@
         // populates the page elements with the app's data.
         ready: function (element, options) {
             var that = this;
-            // TODO: Initialize the page here.
-            document.querySelector("#navToHome").onclick = function (args) {
-                that.MessageService.send("NavigateToMessage", {
-                    viewKey: "home"
-                });
-            };
+        },
+        bindingReady: function () {
+            this.MessageService.send("NavigateToMessage", {
+                viewKey: "home"
+            });
         }
     });
 })();

@@ -1,24 +1,40 @@
 ﻿var ioc = require('../main.node').ioc,
     config = require("../helper/config.node"),
     main = require('../main.node'),
-    windowHelper = require('../helper/window.node');
+    windowHelper = require('../helper/window.node'),
+    winjsHelper = require("../helper/winjs.node");
 
 module.exports = function (template, viewModelType, scope) {
     var baseViewOverrides = {
         init: function (element, options) {
             this.element = element;
-            this.MessageService = main.getServiceByName("message");
+            this.MessageService = main.getService("message");
 
             if (!this._viewModel || !this._viewModel.key) {
                 // TODO: Recover VM on back navigation
                 this.viewModel = new viewModelType();
 
+                if (options && options.viewKey)
+                    this.viewModel.key = options.viewKey;
+
+                winjsHelper.markForProcessing(this.viewModel);
+
                 this.viewModel.addEventListener("data", this.onDataSet.bind(this));
                 this.viewModel.addEventListener("loaded", this.onDataLoaded.bind(this));
             }
 
+            // Add base view classes
+            WinJS.Utilities.addClass(element, "view");
+            if (this.viewModel.key)
+                WinJS.Utilities.addClass(element, "view-" + this.viewModel.key);
+
             if (this._init)
                 return this._init(element, options);
+
+
+            WinJS.Binding.processAll(this.element, this.viewModel);
+            WinJS.UI.processAll();
+            WinJS.Resources.processAll();
         },
 
         onDataSet: function () {
@@ -29,17 +45,7 @@ module.exports = function (template, viewModelType, scope) {
                 return this._onDataSet();
 
             if (this._onDataLoadedFlag && this._onDataSetFlag)
-                this.onBindingReady();
-
-            windowHelper.setTimeout(function () {
-                if (!that._onDataLoadedFlag) {
-                    var messageService = main.ioc.getServiceByName("message");
-                    messageService.send("NavigateToMessage", {
-                        viewKey: "error",
-                        errorKey: "view-load-timeout"
-                    });
-                }
-            }, config.get("behaviors:viewLoadTimeout"));
+                this.bindingReady();
         },
 
         onDataLoaded: function () {
@@ -49,15 +55,19 @@ module.exports = function (template, viewModelType, scope) {
                 return this._onDataLoaded();
 
             if (this._onDataLoadedFlag && this._onDataSetFlag)
-                this.onBindingReady();
+                this.bindingReady();
         },
 
-        onBindingReady: function () {
-            console.log("BaseView:onBindingReady");
-            this._onBindingReadyFlag = true;
+        bindingReady: function () {
+            console.log("BaseView:bindingReady");
+            this._BindingReadyFlag = true;
 
-            if (this._onBindingReady)
-                return this._onBindingReady();
+            WinJS.Binding.processAll(this.element, this.viewModel);
+            WinJS.UI.processAll();
+            WinJS.Resources.processAll();
+
+            if (this._bindingReady)
+                return this._bindingReady();
         }
     };
 
@@ -75,6 +85,8 @@ module.exports = function (template, viewModelType, scope) {
         },
         set: function (val) {
             this._viewModel = val;
+            winjsHelper.markForProcessing(this._viewModel);
+            this.dispatchEvent("viewModel");
         }
     };
 

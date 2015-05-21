@@ -1,11 +1,14 @@
-﻿var async = require('async');
+﻿var async = require('async'),
+    winJSHelper = require('./helper/winjs.node');
 
 require('./setup.node');
 
 exports.load = function (done) {
     console.log("Main:load");
 
-    async.each(exports.getAllServices(),
+    winJSHelper.registerBindingMode();
+
+    async.each(exports.getServices(),
         function (item, itemCb) {
             item.load(itemCb);
         },
@@ -17,7 +20,7 @@ exports.load = function (done) {
 exports.unload = function (done) {
     console.log("Main:unload");
 
-    async.each(exports.getAllServices(),
+    async.each(exports.getServices(),
         function (item, itemCb) {
             item.unload(itemCb);
         },
@@ -29,7 +32,7 @@ exports.unload = function (done) {
 exports.pause = function (done) {
     console.log("Main:pause");
 
-    async.each(exports.getAllServices(),
+    async.each(exports.getServices(),
     function (item, itemCb) {
         item.pause(itemCb);
     },
@@ -39,7 +42,7 @@ exports.pause = function (done) {
 exports.resume = function (done) {
     console.log("Main:resume");
 
-    async.each(exports.getAllServices(),
+    async.each(exports.getServices(),
         function (item, itemCb) {
             item.resume(itemCb);
         },
@@ -48,14 +51,14 @@ exports.resume = function (done) {
 
 exports.ioc = require('./helper/ioc.node');
 
-exports.getAllServices = function () {
+exports.getServices = function () {
     return [
         exports.ioc.get(require('./service/message.node')),
         exports.ioc.get(require('./service/navigation.node'))
     ];
 }
 
-exports.getServiceByName = function (name) {
+exports.getService = function (name) {
     if (MetroNode.sdk.service[name]) {
         return exports.ioc.get(MetroNode.sdk.service[name]);
     }

@@ -18,7 +18,7 @@
             <button data-win-control="WinJS.UI.BackButton"></button>
         </header>
         <section aria-label="Main content" role="main">
-            <button id="navToHome">go to Home</button>
+            <button data-win-bind="onclick: navigateToHomeCommand Binding.Mode.Command" class="win-command-disabled">go to Home</button>
         </section>
     </div>
 </body>
