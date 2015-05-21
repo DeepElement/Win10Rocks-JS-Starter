@@ -11,7 +11,7 @@ Features:
 
 #Setup
 
-- Install Visual Studio 20d15 RC
+- Install Visual Studio 2015 RC
 - Install Python 2.7.9 at https://www.python.org/downloads/release/python-279/
 	- set the PYTHON env variable to local python.exe
 - Install NodeJS tools at https://github.com/Microsoft/nodejstools/releases 
