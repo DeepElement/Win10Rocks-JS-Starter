@@ -15,6 +15,8 @@ Features:
 - Install Python 2.7.9 at https://www.python.org/downloads/release/python-279/
 	- set the PYTHON env variable to local python.exe
 - Install NodeJS tools at https://github.com/Microsoft/nodejstools/releases 
+- (Temporary) Install Visual Studio 2010 C++ Expression (https://goo.gl/SsCI2D)
+	- package `node-pgy` requires this but will be updated Q4 to reference new VS2015 deps 
 
 #Known Issues
 
