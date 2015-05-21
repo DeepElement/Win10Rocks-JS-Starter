@@ -1,31 +1,60 @@
 ﻿var resolver = require('./resolver'),
-    jsdom = require('jsdom');
-
-global = global || {};
-global.window = global.window || {};
-global.msWriteProfilerMark = function () { };
-global.addEventListener = function () { };
-global.navigator = {
-    userAgent: ""
+    jsdom = require('jsdom'),
+    path = require('path');
+    
+var winJSShim = function(){
+    global = global || {};
+    global.window = global.window || {};
+    global.msWriteProfilerMark = function () { };
+    global.addEventListener = function () { };
+    global.navigator = {
+        userAgent: ""
+    };
+    global.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 };
 
-/*var deleteRequireModulesInPath = function (path) {
+var jsdomShim = function(){
+    global.document.documentElement.classList = {
+        add : function(){
+            
+        }
+    };
+};
+
+var deleteRequireModulesInPath = function (path) {
     for (var key in require.cache) {
         if (require.cache[key].id.indexOf(path) > -1)
             delete require.cache[key];
     }
-}*/
+};
 
-/*beforeEach(function (done) {
+var includeScript = function include(f) {
+    var fs = require("fs");
+    var path = require("path");
+    var full = path.join(f);
+    eval.apply(global, [fs.readFileSync(full).toString()]);
+};
+
+beforeEach(function (done) {
     jsdom.env("<html></html>", function (err, window) {
         if (err)
             return done(err);
+            
+        // SHIM Globals
+        winJSShim();
         
         global.window = window;
         global.document = window.document;
-        
+
+        // SHIM JSDOM
+        jsdomShim();
+    
+
         deleteRequireModulesInPath(path.join(__dirname, ".."));
-        require('../src/Shared/vendor/WinJS/js/WinJS');
+        
+        // INCLUDE JS RUNTIME
+        includeScript(__dirname + '/../src/Shared/vendor/WinJS/js/WinJS.js');
+        
         return done();
     });
-});*/
+});

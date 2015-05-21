@@ -50,8 +50,8 @@ exports.ioc = require('./helper/ioc.node');
 
 exports.getAllServices = function () {
     return [
-        exports.ioc.get(MetroNode.sdk.service.message),
-        exports.ioc.get(MetroNode.sdk.service.navigation)
+        exports.ioc.get(require('./service/message.node')),
+        exports.ioc.get(require('./service/navigation.node'))
     ];
 }
 

@@ -2,12 +2,19 @@
   "name": "MetroNode-Bootstrap-Tests",
   "version": "0.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": { },
   "author": "",
   "license": "",
   "dependencies": {
     "async": "^0.9.0",
+    "jsdom": "^3.1.2",
+    "underscore": "^1.8.3",
     "uuid": "^2.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browserify": "^5.13.1",
+    "mocha": "^2.2.5",
+    "should": "^6.0.1",
+    "xmlhttprequest": "^1.7.0"
+  }
 }

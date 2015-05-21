@@ -8,13 +8,13 @@ var members = {
     load: function (done) {
         return done();
     },
-    pause: function () {
+    pause: function (done) {
         return done();
     },
-    resume: function () {
+    resume: function (done) {
         return done();
     },
-    unload: function () {
+    unload: function (done) {
         return done();
     }
 }
