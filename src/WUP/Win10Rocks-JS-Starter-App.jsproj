@@ -49,7 +49,7 @@
     <TargetPlatformMinVersion>10.0.10069.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>MetroNode-Bootstrap-WUP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Win10Rocks-JS-Starter-App_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -66,12 +66,12 @@
     <Content Include="css\default.css" />
     <Content Include="js\default.js" />
     <Content Include="packages.config" />
-    <None Include="MetroNode-Bootstrap-WUP_TemporaryKey.pfx" />
+    <None Include="Win10Rocks-JS-Starter-App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
-  <Import Project="..\Shared\MetroNode-Bootstrap-Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\Win10Rocks-JS-Starter-Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <Import Project="..\..\packages\MetroNode.0.2.8\build\metronode.targets" Condition="Exists('..\..\packages\MetroNode.0.2.8\build\metronode.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
