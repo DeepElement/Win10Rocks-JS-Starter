@@ -25,6 +25,7 @@ module.exports = function (template, viewModelType, scope) {
 
             // Add base view classes
             WinJS.Utilities.addClass(element, "view");
+            WinJS.Utilities.addClass(element, "loading");
             if (this.viewModel.key)
                 WinJS.Utilities.addClass(element, "view-" + this.viewModel.key);
 
@@ -40,6 +41,8 @@ module.exports = function (template, viewModelType, scope) {
         onDataSet: function () {
             var that = this;
             this._onDataSetFlag = true;
+
+            WinJS.Utilities.addClass(this.element, "loading");
 
             if (this._onDataSet)
                 return this._onDataSet();
@@ -59,12 +62,13 @@ module.exports = function (template, viewModelType, scope) {
         },
 
         bindingReady: function () {
-            console.log("BaseView:bindingReady");
             this._BindingReadyFlag = true;
 
             WinJS.Binding.processAll(this.element, this.viewModel);
             WinJS.UI.processAll();
             WinJS.Resources.processAll();
+
+            WinJS.Utilities.removeClass(this.element, "loading");
 
             if (this._bindingReady)
                 return this._bindingReady();

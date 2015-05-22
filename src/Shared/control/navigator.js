@@ -8,7 +8,16 @@
             // Define the constructor function for the PageControlNavigator.
             function PageControlNavigator(element, options) {
                 this._element = element || document.createElement("div");
+
+
                 this._element.appendChild(this._createPageElement());
+
+                this._progressElement = document.createElement("div");
+                WinJS.Utilities.addClass(this._progressElement, "win-disposable loading-container");
+                var progress = document.createElement("progress");
+                WinJS.Utilities.addClass(progress, "win-ring");
+                this._progressElement.appendChild(progress);
+                this._element.appendChild(this._progressElement);
 
                 this.home = options.home;
 
@@ -32,6 +41,7 @@
                 home: "",
                 /// <field domElement="true" />
                 _element: null,
+                _progressElement: null,
                 _lastNavigationPromise: WinJS.Promise.as(),
                 _lastViewstate: 0,
 
@@ -67,6 +77,7 @@
                     element.style.visibility = "hidden";
                     element.style.width = "100%";
                     element.style.height = "100%";
+                    WinJS.Utilities.addClass(element, "hidden");
                     return element;
                 },
 
@@ -93,11 +104,22 @@
                     });
                 },
 
+                onViewDataSet: function () {
+                    WinJS.Utilities.addClass(this.pageElement, "hidden");
+                    WinJS.Utilities.removeClass(this._progressElement, "hidden");
+                },
+
+                onViewDataLoaded: function () {
+                    WinJS.Utilities.removeClass(this.pageElement, "hidden");
+                    WinJS.Utilities.addClass(this._progressElement, "hidden");
+                },
+
                 // Responds to navigation by adding new pages to the DOM. 
                 _navigating: function (args) {
                     var newElement = this._createPageElement();
-                    var that = this;
+
                     this._element.appendChild(newElement);
+                    this._element.appendChild(this._progressElement);
 
                     this._lastNavigationPromise.cancel();
 
@@ -108,6 +130,9 @@
                             var oldElement = that._element.firstElementChild;
                             // Cleanup and remove previous element 
                             if (oldElement.winControl) {
+                                oldElement.winControl.viewModel.addEventListener("data", that.onViewDataSet.bind(that));
+                                oldElement.winControl.viewModel.addEventListener("loaded", that.onViewDataLoaded.bind(that));
+
                                 if (oldElement.winControl.unload) {
                                     oldElement.winControl.unload();
                                 }
@@ -122,6 +147,13 @@
                         return WinJS.UI.Pages.render(args.detail.location, newElement, args.detail.state);
                     }).then(cleanup, cleanup).then(function () {
                         var messageService = MetroNode.sdk.main.getService("message");
+
+                        that.pageControl.viewModel.addEventListener("data", that.onViewDataSet.bind(that));
+                        that.pageControl.viewModel.addEventListener("loaded", that.onViewDataLoaded.bind(that));
+
+                        WinJS.Utilities.addClass(that.pageElement, "hidden");
+                        WinJS.Utilities.removeClass(that._progressElement, "hidden");
+
                         messageService.send("NavigatingMessage", {
                             url: args.detail.location,
                             view: that.pageControl,

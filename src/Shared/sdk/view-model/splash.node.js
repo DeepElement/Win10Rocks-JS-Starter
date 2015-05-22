@@ -1,5 +1,6 @@
 ﻿var loggingProvider = require('../provider/logging.node'),
     baseViewModel = require('./base.node'),
+    main = require("../main.node"),
     windowHelper = require('../helper/window.node');
 
 // Constructor
@@ -12,9 +13,13 @@ var instanceMembers = {
         var that = this;
         baseViewModel.prototype.onDataSet.call(this, arguments);
 
+        that.dispatchEvent('loaded');
+
         // Simulate load
         windowHelper.setTimeout(function () {
-            that.dispatchEvent('loaded');
+            main.getService("message").send("NavigateToMessage", {
+                viewKey: "home"
+            });
         }, 10000);
     }
 };

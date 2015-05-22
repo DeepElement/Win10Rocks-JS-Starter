@@ -10,9 +10,7 @@
             var that = this;
         },
         bindingReady: function () {
-            this.MessageService.send("NavigateToMessage", {
-                viewKey: "home"
-            });
+
         }
     });
 })();
