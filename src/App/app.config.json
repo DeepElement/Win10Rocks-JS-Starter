@@ -1,0 +1,6 @@
+﻿{
+  "uiFrameworkManifest": [
+    "vendor/WinJS-4.0.0-preview/js/WinJS.js",
+    "vendor/WinJS-4.0.0-preview/css/ui-dark.css"
+  ]
+}

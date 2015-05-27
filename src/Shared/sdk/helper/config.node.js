@@ -57,6 +57,6 @@ exports.file = function (path, callback) {
             return callback();
     },
         function (err) {
-            throw new Error(err);
+            return callback(err);
         });
 }

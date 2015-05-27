@@ -3,16 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Win10Rocks-JS-Starter-App", "src\WUP\Win10Rocks-JS-Starter-App.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Test", "test\Test.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Win10Rocks-JS-Starter-Shared", "src\Shared\Win10Rocks-JS-Starter-Shared.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "App", "src\App\App.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Win10Rocks-JS-Starter-Test", "test\Win10Rocks-JS-Starter-Test.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "src\Shared\Common.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UI-WinJS", "src\UI\UI-WinJS.shproj", "{29DDA2D1-BFD6-4C9C-9742-6BEC143D71E1}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\Shared\Win10Rocks-JS-Starter-Shared.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
-		src\Shared\Win10Rocks-JS-Starter-Shared.projitems*{e5ff94e5-80a7-4518-aca9-84fa90d52999}*SharedItemsImports = 13
+		src\Shared\Common.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
+		src\UI\UI-WinJS.projitems*{c315df64-6226-4bd3-bdfd-0202f963217a}*SharedItemsImports = 5
+		src\Shared\Common.projitems*{e5ff94e5-80a7-4518-aca9-84fa90d52999}*SharedItemsImports = 13
+		src\UI\UI-WinJS.projitems*{29dda2d1-bfd6-4c9c-9742-6bec143d71e1}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.Build.0 = Debug|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.Build.0 = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.ActiveCfg = Release|Any CPU
+		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.Build.0 = Release|Any CPU
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -49,22 +69,6 @@ Global
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.ActiveCfg = Release|x86
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.Build.0 = Release|x86
 		{C315DF64-6226-4BD3-BDFD-0202F963217A}.Release|x86.Deploy.0 = Release|x86
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|ARM.Build.0 = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x64.Build.0 = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Debug|x86.Build.0 = Debug|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.ActiveCfg = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|ARM.Build.0 = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.ActiveCfg = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x64.Build.0 = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.ActiveCfg = Release|Any CPU
-		{675BCED5-15C4-461B-89BB-237429B5967E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

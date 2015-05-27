@@ -6,20 +6,10 @@
     <SharedGUID>e5ff94e5-80a7-4518-aca9-84fa90d52999</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)control\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\command\relay.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\config.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\window.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\winjs.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)view\home\home.css" />
-    <Content Include="$(MSBuildThisFileDirectory)view\home\home.html" />
-    <Content Include="$(MSBuildThisFileDirectory)view\home\home.js" />
-    <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.css" />
-    <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.html" />
-    <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.js" />
-    <Content Include="$(MSBuildThisFileDirectory)view\splash\splash.css" />
-    <Content Include="$(MSBuildThisFileDirectory)view\splash\splash.html" />
-    <Content Include="$(MSBuildThisFileDirectory)view\splash\splash.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\class.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\ioc.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />
@@ -33,12 +23,5 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\settings.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view-model\splash.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\view\define.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\css\ui-dark.css" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\css\ui-light.css" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\fonts\Symbols.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\en-US\ui.strings.js" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.intellisense-setup.js" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.intellisense.js" />
-    <Content Include="$(MSBuildThisFileDirectory)vendor\WinJS\js\WinJS.js" />
   </ItemGroup>
 </Project>

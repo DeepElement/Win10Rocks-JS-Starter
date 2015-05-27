@@ -1,19 +1,23 @@
 ﻿var async = require('async'),
-    winJSHelper = require('./helper/winjs.node');
+    winJSHelper = require('./helper/winjs.node'),
+    config = require('./helper/config.node');
 
 require('./setup.node');
 
 exports.load = function (done) {
     console.log("Main:load");
+    var BUILD_ENV = window.process.env["BUILD_ENV"] || "development";
+    config.file("config." + BUILD_ENV + ".json",
+        function () {
+            winJSHelper.registerBindingMode();
 
-    winJSHelper.registerBindingMode();
-
-    async.each(exports.getServices(),
-        function (item, itemCb) {
-            item.load(itemCb);
-        },
-        function (err) {
-            return done(err);
+            async.each(exports.getServices(),
+                function (item, itemCb) {
+                    item.load(itemCb);
+                },
+                function (err) {
+                    return done(err);
+                });
         });
 }
 

@@ -1,8 +1,8 @@
 ﻿var resolver = require('./resolver'),
     jsdom = require('jsdom'),
     path = require('path');
-    
-var winJSShim = function(){
+
+var winJSShim = function () {
     global = global || {};
     global.window = global.window || {};
     global.msWriteProfilerMark = function () { };
@@ -13,9 +13,9 @@ var winJSShim = function(){
     global.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 };
 
-var jsdomShim = function(){
+var jsdomShim = function () {
     global.document.documentElement.classList = {
-        add : function(){
+        add : function () {
             
         }
     };
@@ -39,21 +39,22 @@ beforeEach(function (done) {
     jsdom.env("<html></html>", function (err, window) {
         if (err)
             return done(err);
-            
+        
         // SHIM Globals
         winJSShim();
         
         global.window = window;
+        global.window.process = global.window.process || {};
+        global.window.process.env = global.window.process.env || {};
         global.document = window.document;
-
+        
         // SHIM JSDOM
         jsdomShim();
-    
-
+        
         deleteRequireModulesInPath(path.join(__dirname, ".."));
         
         // INCLUDE JS RUNTIME
-        includeScript(__dirname + '/../src/Shared/vendor/WinJS/js/WinJS.js');
+        includeScript(__dirname + '/../src/UI/vendor/WinJS-4.0.0-preview/js/WinJS.js');
         
         return done();
     });

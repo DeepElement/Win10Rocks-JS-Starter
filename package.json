@@ -1,8 +1,8 @@
 {
-  "name": "MetroNode-Bootstrap",
+  "name": "Win10Rocks-JS-Starter-App",
   "version": "0.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": { },
   "author": "",
   "license": "",
   "dependencies": {
