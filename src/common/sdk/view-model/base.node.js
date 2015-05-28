@@ -25,7 +25,7 @@ var instanceMembers = {
         // TODO: Catch view load timeouts
         /*windowHelper.setTimeout(function () {
             if (!that._onDataLoadedFlag) {
-                var messageService = main.ioc.getService("message");
+                var messageService = main.ioc.getComponent("messageService");
                 messageService.send("NavigateToMessage", {
                     viewKey: "error",
                     errorKey: "view-load-timeout"

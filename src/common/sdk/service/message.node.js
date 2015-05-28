@@ -95,7 +95,7 @@ var members = {
                 },
                 function () {
                     // AOP Broadcast
-                    main.ioc.getAllInstances().forEach(function (component) {
+                    main.getAllComponentInstances().forEach(function (component) {
                         if (component["on" + messageType])
                             component["on" + messageType](messageType, args);
                     });

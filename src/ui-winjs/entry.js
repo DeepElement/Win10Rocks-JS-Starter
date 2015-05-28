@@ -17,7 +17,7 @@
                 MetroNode.sdk.main.load(function () {
                     // TODO: Loaded actions
                     console.log("sdk:loaded");
-                    MetroNode.sdk.main.getService("message").send("NavigateToMessage", {
+                    MetroNode.sdk.main.getComponent("messageService").send("NavigateToMessage", {
                         viewKey: "splash"
                     });
                 });

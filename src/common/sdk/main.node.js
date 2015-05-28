@@ -2,8 +2,10 @@
     winJSHelper = require('./helper/winjs.node'),
     windowHelper = require('./helper/window.node'),
     config = require('./helper/config.node'),
-    path = require('path');
+    path = require('path'),
+    ioc = require('./helper/ioc.node');
 
+require('./runtime.node');
 require('./setup.node');
 
 exports.load = function (done) {
@@ -18,7 +20,6 @@ exports.load = function (done) {
                      config.file(item, itemCb);
                  },
                  function (err) {
-                     console.log(err);
                      return cb(err);
                  });
          }
@@ -34,6 +35,7 @@ exports.load = function (done) {
                 item.load(itemCb);
             },
             function (err) {
+                console.log('done');
                 return done(err);
             });
     });
@@ -72,18 +74,36 @@ exports.resume = function (done) {
         done);
 }
 
-exports.ioc = require('./helper/ioc.node');
-
 exports.getServices = function () {
-    return [
-        exports.ioc.get(require('./service/message.node')),
-        exports.ioc.get(require('./service/navigation.node'))
-    ];
+    var keys = ioc.getRegisteredKeys().filter(function (k) {
+        return k.endsWith('Service');
+    });
+    var instances = [];
+    keys.forEach(function (k) {
+        instances.push(ioc.get(k));
+    });
+    return instances;
 }
 
-exports.getService = function (name) {
-    if (MetroNode.sdk.service[name]) {
-        return exports.ioc.get(MetroNode.sdk.service[name]);
-    }
-    return null;
+exports.getProviders = function () {
+    var keys = ioc.getRegisteredKeys().filter(function (k) {
+        return k.endsWith('Provider');
+    });
+    var instances = [];
+    keys.forEach(function (k) {
+        instances.push(ioc.get(k));
+    });
+    return instances;
+}
+
+exports.getComponent = function (name) {
+    return ioc.get(name);
+}
+
+exports.getAllComponentInstances = function () {
+    return ioc.getAllInstances();
+}
+
+exports.overrideComponent = function (name, type) {
+    return ioc.override(name, type);
 }

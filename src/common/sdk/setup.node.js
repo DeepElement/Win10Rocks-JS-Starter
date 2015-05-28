@@ -14,6 +14,6 @@ config.assert("configuration");
 //config.assert("path:common:baseDir");
 
 // Register container instances
-ioc.register(require('./service/navigation.node'), "application");
-ioc.register(require('./service/message.node'), "application");
-//ioc.register(require('./command/relay.node'), "request");
+ioc.register("navigationService", require('./service/navigation.node'), "application");
+ioc.register("messageService", require('./service/message.node'), "application");
+ioc.register("navigationProvider", require('./provider/navigation.node'), "application");

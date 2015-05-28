@@ -9,7 +9,7 @@ module.exports = function (template, viewModelType, scope) {
         init: function (element, options) {
             console.log("view:init");
             this.element = element;
-            this.MessageService = main.getService("message");
+            this.MessageService = main.getComponent("messageService");
 
             if (!this._viewModel || !this._viewModel.key) {
                 // TODO: Recover VM on back navigation

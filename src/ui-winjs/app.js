@@ -1,36 +1,39 @@
-﻿function loadScript(url, callback) {
+﻿function loadResource(url, type, callback) {
     var head = document.getElementsByTagName('head')[0];
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
+    switch (type) {
+        case "script":
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
 
-    script.onreadystatechange = callback;
-    script.onload = callback;
+            script.onreadystatechange = callback;
+            script.onload = callback;
 
-    head.appendChild(script);
-}
+            head.appendChild(script);
+            break;
+        case "style":
+            var head = document.getElementsByTagName('head')[0];
+            var link = document.createElement('link');
+            link.href = url;
+            link.type = "text/css";
+            link.rel = "stylesheet";
+            link.media = "screen,print";
 
-function loadStyle(url, callback) {
-    var head = document.getElementsByTagName('head')[0];
-    var link = document.createElement('link');
-    link.href = url;
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.media = "screen,print";
+            link.onreadystatechange = callback;
+            link.onload = callback;
 
-    link.onreadystatechange = callback;
-    link.onload = callback;
-
-    head.appendChild(link);
+            head.appendChild(link);
+            break;
+    }
 }
 
 // Load Styles
-loadStyle('/vendor/WinJS-4.0.0-preview/css/ui-dark.css');
-loadStyle('/css/default.css');
-
+loadResource('/vendor/WinJS-4.0.0-preview/css/ui-dark.css', 'style');
+loadResource('/css/default.css', 'style');
 
 // Load scripts
-loadScript("/vendor/WinJS-4.0.0-preview/js/WinJS.js");
-loadScript("/.metro.node.js");
-loadScript("/default.js");
-loadScript("/control/navigator.js");
+loadResource("/vendor/WinJS-4.0.0-preview/js/WinJS.js", 'script');
+loadResource("/.metro.node.js", 'script');
+loadResource("/components/navigationProvider.js", 'script');
+loadResource("/entry.js", 'script');
+loadResource("/view/navigator.js", 'script');

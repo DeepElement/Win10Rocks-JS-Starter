@@ -18,7 +18,7 @@ var instanceMembers = {
         get: function () {
             var that = this;
             return new relayCommand(function () {
-                var messageService = main.getService("message");
+                var messageService = main.getComponent("messageService");
                 messageService.send("NavigateToMessage", {
                     viewKey: "home"
                 });

@@ -94,7 +94,7 @@
                     var that = this;
                     this.pageElement.style.visibility = "";
                     WinJS.UI.Animation.enterPage(this._getAnimationElements()).done(function () {
-                        var messageService = MetroNode.sdk.main.getService("message");
+                        var messageService = MetroNode.sdk.main.getComponent("messageService");
                         messageService.send("NavigatedMessage", {
                             url: nav.location,
                             view: that.pageControl,
@@ -146,7 +146,7 @@
                     this._lastNavigationPromise = WinJS.Promise.as().then(function () {
                         return WinJS.UI.Pages.render(args.detail.location, newElement, args.detail.state);
                     }).then(cleanup, cleanup).then(function () {
-                        var messageService = MetroNode.sdk.main.getService("message");
+                        var messageService = MetroNode.sdk.main.getComponent("messageService");
 
                         that.pageControl.viewModel.addEventListener("data", that.onViewDataSet.bind(that));
                         that.pageControl.viewModel.addEventListener("loaded", that.onViewDataLoaded.bind(that));

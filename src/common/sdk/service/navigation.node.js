@@ -23,10 +23,9 @@ var members = {
         console.log("navigationService:onNavigateToMessage:" + viewKey);
         if (viewKey) {
             viewKey = viewKey.toLowerCase();
-            WinJS.Navigation.navigate("/view/" + viewKey + "/" + viewKey + ".html", {
-                viewKey: viewKey,
-                state: args.state
-            });
+            var navigationProvider = main.getComponent("navigationProvider");
+            console.log(navigationProvider);
+            navigationProvider.navigate(viewKey, args.state);
         }
     },
 

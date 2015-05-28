@@ -17,7 +17,7 @@ var instanceMembers = {
 
         // Simulate load
         windowHelper.setTimeout(function () {
-            main.getService("message").send("NavigateToMessage", {
+            main.getComponent("messageService").send("NavigateToMessage", {
                 viewKey: "home"
             });
         }, 10000);

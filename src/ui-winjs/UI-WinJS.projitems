@@ -7,9 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)app.js" />
-    <Content Include="$(MSBuildThisFileDirectory)control\navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\navigationProvider.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
-    <Content Include="$(MSBuildThisFileDirectory)default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)entry.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\logo.scale-100.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\smalllogo.scale-100.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\splashscreen.scale-100.png" />
@@ -24,6 +24,7 @@
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.html" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)view\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.css" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.html" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.js" />
