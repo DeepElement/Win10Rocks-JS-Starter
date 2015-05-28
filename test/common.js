@@ -46,6 +46,11 @@ beforeEach(function (done) {
         global.window = window;
         global.window.process = global.window.process || {};
         global.window.process.env = global.window.process.env || {};
+        window.process.env["configuration"] = "test";
+        window.process.env["path:app:baseDir"] = path.join(__dirname, "..", "src", "App");
+        window.process.env["path:ui:baseDir"] = path.join(__dirname, "..", "src", "UI-WinJS");
+        window.process.env["path:common:baseDir"] = path.join(__dirname, "..", "src", "common");
+        
         global.document = window.document;
         
         // SHIM JSDOM
@@ -54,7 +59,7 @@ beforeEach(function (done) {
         deleteRequireModulesInPath(path.join(__dirname, ".."));
         
         // INCLUDE JS RUNTIME
-        includeScript(__dirname + '/../src/UI/vendor/WinJS-4.0.0-preview/js/WinJS.js');
+        includeScript(__dirname + '/../src/UI-WinJS/vendor/WinJS-4.0.0-preview/js/WinJS.js');
         
         return done();
     });
