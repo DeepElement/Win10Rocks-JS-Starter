@@ -15,6 +15,7 @@
     <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\provider\logging.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\provider\navigation.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\provider\network.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\runtime.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\service\base.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\service\message.node.js" />

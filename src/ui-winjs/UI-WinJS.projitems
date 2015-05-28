@@ -8,6 +8,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)app.js" />
     <Content Include="$(MSBuildThisFileDirectory)components\navigationProvider.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\networkProvider.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
     <Content Include="$(MSBuildThisFileDirectory)entry.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\logo.scale-100.png" />

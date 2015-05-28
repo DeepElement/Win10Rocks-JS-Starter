@@ -35,5 +35,6 @@ loadResource('/css/default.css', 'style');
 loadResource("/vendor/WinJS-4.0.0-preview/js/WinJS.js", 'script');
 loadResource("/.metro.node.js", 'script');
 loadResource("/components/navigationProvider.js", 'script');
+loadResource("/components/networkProvider.js", 'script');
 loadResource("/entry.js", 'script');
 loadResource("/view/navigator.js", 'script');

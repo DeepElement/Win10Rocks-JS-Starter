@@ -1,4 +1,5 @@
-﻿var _ = require("underscore");
+﻿var _ = require("underscore"),
+    ioc = require('../helper/ioc.node');
 
 var store = {};
 exports.get = function (path) {
@@ -70,14 +71,8 @@ exports.file = function (path, callback) {
 exports.loadFile = function (path, callback) {
     try {
         if (path.indexOf("ms-appx://") > -1) {
-            WinJS.xhr({
-                url: path
-            }).done(function (response) {
-                return callback(null, JSON.parse(response.responseText));
-            },
-             function (err) {
-                 return callback(err);
-             });
+            var networkProvider = ioc.get("networkProvider");
+            networkProvider.get(path, callback);
         } else {
             var response = require(path);
             return callback(null, response);

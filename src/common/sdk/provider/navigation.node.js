@@ -5,7 +5,7 @@ var NavigationProvider = function (options) {
 
 var members = {
     navigate: function (viewKey, state) {
-
+        throw new Error("not-implemented");
     }
 }
 
