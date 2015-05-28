@@ -12,12 +12,12 @@ describe('Unit', function () {
                 var sampleClass = function () { };
                 
                 // act
-                subject.register(sampleClass, "request");
+                subject.register('key', sampleClass, "request");
                 subject.clear();
                 
                 // assert
                 (function () {
-                    subject.get(sampleClass)
+                    subject.get('key')
                 }).should.throw();
             });
         });
@@ -30,7 +30,7 @@ describe('Unit', function () {
                 
                 // assert
                 (function () {
-                    subject.register(sampleClass, "ninja-scope");
+                    subject.register('key', sampleClass, "ninja-scope");
                 }).should.throw();
             });
             
@@ -47,9 +47,9 @@ describe('Unit', function () {
                 };
                 
                 // act
-                subject.register(sampleClass, "request");
-                var instance = subject.get(sampleClass);
-                var secondInstance = subject.get(sampleClass);
+                subject.register('key', sampleClass, "request");
+                var instance = subject.get('key');
+                var secondInstance = subject.get('key');
                 
                 // assert
                 instance._instance.should.not.equal(secondInstance._instance);
@@ -69,9 +69,9 @@ describe('Unit', function () {
                 };
                 
                 // act
-                subject.register(sampleClass, "application");
-                var instance = subject.get(sampleClass);
-                var secondInstance = subject.get(sampleClass);
+                subject.register('key', sampleClass, "application");
+                var instance = subject.get('key');
+                var secondInstance = subject.get('key');
                 
                 // assert
                 instance._instance.should.equal(secondInstance._instance);
