@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Test", "test\Test.njsproj", "{675BCED5-15C4-461B-89BB-237429B5967E}"
 EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "App", "src\App\App.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UI-WinJS", "src\UI-WinJS\UI-WinJS.shproj", "{29DDA2D1-BFD6-4C9C-9742-6BEC143D71E1}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "src\common\Common.shproj", "{E5FF94E5-80A7-4518-ACA9-84FA90D52999}"
+EndProject
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "App-universal", "src\app-universal\App-universal.jsproj", "{C315DF64-6226-4BD3-BDFD-0202F963217A}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
