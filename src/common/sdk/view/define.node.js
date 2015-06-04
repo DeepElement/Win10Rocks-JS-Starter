@@ -24,6 +24,11 @@ module.exports = function (template, viewModelType, scope) {
                 this.viewModel.addEventListener("loaded", this.onDataLoaded.bind(this));
             }
 
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "init",
+                context: this
+            });
+
             // Add base view classes
             WinJS.Utilities.addClass(element, "view");
             WinJS.Utilities.addClass(element, "loading");

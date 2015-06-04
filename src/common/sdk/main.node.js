@@ -9,7 +9,7 @@ require('./runtime.node');
 require('./setup.node');
 
 exports.load = function (done) {
-    console.log("Main:load");
+    //console.log("Main:load");
     async.waterfall([
          function (cb) {
              // Load Configurations
@@ -35,7 +35,6 @@ exports.load = function (done) {
                 item.load(itemCb);
             },
             function (err) {
-                console.log('done');
                 return done(err);
             });
     });
@@ -43,7 +42,7 @@ exports.load = function (done) {
 }
 
 exports.unload = function (done) {
-    console.log("Main:unload");
+    //console.log("Main:unload");
 
     async.each(exports.getServices(),
         function (item, itemCb) {
@@ -55,7 +54,7 @@ exports.unload = function (done) {
 }
 
 exports.pause = function (done) {
-    console.log("Main:pause");
+    //console.log("Main:pause");
 
     async.each(exports.getServices(),
     function (item, itemCb) {
@@ -65,7 +64,7 @@ exports.pause = function (done) {
 }
 
 exports.resume = function (done) {
-    console.log("Main:resume");
+    //console.log("Main:resume");
 
     async.each(exports.getServices(),
         function (item, itemCb) {

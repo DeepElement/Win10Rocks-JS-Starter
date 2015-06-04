@@ -16,37 +16,38 @@ var members = {
         return null;
     },
 
-    register: function () {
-        var _context = NBCU.Class.args.apply(this, arguments);
-
-        var messagePayload = _context.data;
-        if (!Array.isArray(messagePayload)) {
-            messagePayload = [messagePayload];
-        }
-
-        var existingRecord = this._findRecordByMessageCriteria(messagePayload);
+    register: function (messageTypes, callback, ordered) {
+        if(!Array.isArray(messageTypes))
+            messageTypes = [messageTypes];
+        
+        
+        var existingRecord = this._findRecordByMessageCriteria(messageTypes);
         if (!existingRecord) {
             existingRecord = {
-                messages: messagePayload,
+                messages: messageTypes,
                 callbacks: [],
-                ordered: _context.options.ordered || false
+                ordered: ordered || false
             };
             this._registry.push(existingRecord);
         }
 
-        if (existingRecord.callbacks.indexOf(_context.callback) == -1)
-            existingRecord.callbacks.push(_context.callback);
+        if (existingRecord.callbacks.indexOf(callback) == -1)
+            existingRecord.callbacks.push(callback);
+    },
+    
+    isRegistered : function(messageTypes){
+        if(!Array.isArray(messageTypes))
+            messageTypes = [messageTypes];
+        
+        var existingRecord = this._findRecordByMessageCriteria(messageTypes);
+        return existingRecord != null;
     },
 
-    unregister: function (messageType, delegate) {
-        var _context = NBCU.Class.args.apply(this, arguments);
-
-        var messagePayload = _context.data;
-        if (!Array.isArray(messagePayload)) {
-            messagePayload = [messagePayload];
-        }
-
-        var existingRecord = this._findRecordByMessageCriteria(messagePayload);
+    unregister: function (messageTypes, delegate) {
+        if(!Array.isArray(messageTypes))
+            messageTypes = [messageTypes];
+        
+        var existingRecord = this._findRecordByMessageCriteria(messageTypes);
         if (existingRecord && existingRecord.callbacks.indexOf(delegate) != -1)
             existingRecord.callbacks.splice(existingRecord.callbacks.indexOf(delegate), 1);
 
@@ -79,8 +80,10 @@ var members = {
             }
 
             // match combinations
+            var combinationContext;
             _self._registry.forEach(function (r) {
                 if (r.messages.length > 1 && _self._messageStack.contains(r.messages, r.ordered)) {
+                    combinationContext = r.messages;
                     r.callbacks.forEach(function (c) {
                         callbackPayload.push(c);
                     });
@@ -90,7 +93,11 @@ var members = {
             async.each(
                 callbackPayload,
                 function (item, item_callback) {
-                    item(messageType, args || {});
+                    if(args)
+                        item(messageType, args);
+                    else
+                        item(messageType);
+                        
                     item_callback();
                 },
                 function () {

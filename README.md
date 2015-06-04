@@ -10,7 +10,7 @@ Features:
 - Windows 10 Compatible Navigation
 
 #Setup
-
+w
 - Install Visual Studio 2015 RC
 - Install Python 2.7.9 at https://www.python.org/downloads/release/python-279/
 	- set the PYTHON env variable to local python.exe
@@ -20,6 +20,13 @@ Features:
 - run `npm install` in the repo root
 - run `npm install` in the test folder 
 
+#Development Guide
+
+## Tests
+Using http://sinonjs.org/ and http://mochajs.org/
+
+
 #Known Issues
 
 - Mocha Debugger Broken for some environments - https://github.com/Microsoft/nodejstools/issues/79
+
