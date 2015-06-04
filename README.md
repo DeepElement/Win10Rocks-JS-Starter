@@ -1,6 +1,8 @@
 # Win10.Rocks HTML5/JS Starter
 Windows 10 starting architecture for HTML5/JS developers
 
+[![Build Status](https://travis-ci.org/DeepElement/Win10Rocks-JS-Starter.svg?branch=master)](https://travis-ci.org/DeepElement/Win10Rocks-JS-Starter)
+
 Features:
 
 - CommonJS Business Layer (NodeJS friendly!)
@@ -10,7 +12,6 @@ Features:
 - Windows 10 Compatible Navigation
 
 #Setup
-w
 - Install Visual Studio 2015 RC
 - Install Python 2.7.9 at https://www.python.org/downloads/release/python-279/
 	- set the PYTHON env variable to local python.exe
