@@ -82,10 +82,12 @@ exports.clear = function () {
 
             // Do the delete
             instance.instances.forEach(function (i) {
-                delete i;
+                // TODO: find a way to delete that is strict mode compat
+                //delete i;
             });
         }
-        delete instance;
+        // TODO: find a way to delete that is strict mode compat
+        //delete instance;
     }
     _registery = {};
 }
