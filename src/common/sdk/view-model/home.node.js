@@ -5,7 +5,7 @@
 
 // Constructor
 function HomeViewModel(options) {
-    loggingProvider.log("HomeViewModel:created");
+
 }
 
 var instanceMembers = {

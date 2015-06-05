@@ -5,7 +5,7 @@
 
 // Constructor
 function SplashViewModel(options) {
-    loggingProvider.log("HomeViewModel:created");
+
 }
 
 var instanceMembers = {

@@ -1,13 +1,11 @@
 ﻿var ioc = require('../main.node').ioc,
     config = require("../helper/config.node"),
     main = require('../main.node'),
-    windowHelper = require('../helper/window.node'),
-    winjsHelper = require("../helper/winjs.node");
+    windowHelper = require('../helper/window.node');
 
 module.exports = function (template, viewModelType, scope) {
     var baseViewOverrides = {
         init: function (element, options) {
-            console.log("view:init");
             this.element = element;
             this.MessageService = main.getComponent("messageService");
 
@@ -18,48 +16,62 @@ module.exports = function (template, viewModelType, scope) {
                 if (options && options.viewKey)
                     this.viewModel.key = options.viewKey;
 
-                winjsHelper.markForProcessing(this.viewModel);
-
                 this.viewModel.addEventListener("data", this.onDataSet.bind(this));
                 this.viewModel.addEventListener("loaded", this.onDataLoaded.bind(this));
             }
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "preInit",
+                context: this
+            });
+
+            if (this._init)
+                return this._init(element, options);
 
             this.MessageService.send("ViewPhaseMessage", {
                 phase: "init",
                 context: this
             });
 
-            // Add base view classes
-            WinJS.Utilities.addClass(element, "view");
-            WinJS.Utilities.addClass(element, "loading");
-            if (this.viewModel.key)
-                WinJS.Utilities.addClass(element, "view-" + this.viewModel.key);
-
-            if (this._init)
-                return this._init(element, options);
-
-
-            WinJS.Binding.processAll(this.element, this.viewModel);
-            WinJS.UI.processAll();
-            WinJS.Resources.processAll();
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "postInit",
+                context: this
+            });
         },
 
         onDataSet: function () {
-            console.log("view:onDataSet");
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "preOnDataSet",
+                context: this
+            });
+
             var that = this;
             this._onDataSetFlag = true;
-
-            WinJS.Utilities.addClass(this.element, "loading");
 
             if (this._onDataSet)
                 return this._onDataSet();
 
             if (this._onDataLoadedFlag && this._onDataSetFlag)
                 this.bindingReady();
+
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "onDataSet",
+                context: this
+            });
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "postOnDataSet",
+                context: this
+            });
         },
 
         onDataLoaded: function () {
-            console.log("view:onDataLoaded");
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "preOnDataLoaded",
+                context: this
+            });
+
             this._onDataLoadedFlag = true;
 
             if (this._onDataLoaded)
@@ -67,20 +79,36 @@ module.exports = function (template, viewModelType, scope) {
 
             if (this._onDataLoadedFlag && this._onDataSetFlag)
                 this.bindingReady();
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "onDataLoaded",
+                context: this
+            });
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "postOnDataLoaded",
+                context: this
+            });
         },
 
         bindingReady: function () {
-            console.log("view:bindingReady");
-            this._BindingReadyFlag = true;
-
-            WinJS.Binding.processAll(this.element, this.viewModel);
-            WinJS.UI.processAll();
-            WinJS.Resources.processAll();
-
-            WinJS.Utilities.removeClass(this.element, "loading");
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "preBindingReady",
+                context: this
+            });
 
             if (this._bindingReady)
                 return this._bindingReady();
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "bindingReady",
+                context: this
+            });
+
+            this.MessageService.send("ViewPhaseMessage", {
+                phase: "postBindingReady",
+                context: this
+            });
         }
     };
 
@@ -98,7 +126,6 @@ module.exports = function (template, viewModelType, scope) {
         },
         set: function (val) {
             this._viewModel = val;
-            winjsHelper.markForProcessing(this._viewModel);
             this.dispatchEvent("viewModel");
         }
     };

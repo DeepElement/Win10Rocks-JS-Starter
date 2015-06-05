@@ -8,15 +8,12 @@
     var ui = WinJS.UI;
 
     app.addEventListener("activated", function (args) {
-        console.log("winjs:activated");
-
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
                 MetroNode.sdk.main.load(function () {
                     // TODO: Loaded actions
-                    console.log("sdk:loaded");
                     MetroNode.sdk.main.getComponent("messageService").send("NavigateToMessage", {
                         viewKey: "splash"
                     });
@@ -26,7 +23,6 @@
                 // Restore application state here.
                 MetroNode.sdk.main.resume(function () {
                     // TODO: Resume actions
-                    console.log("sdk:resumed");
                 });
             }
 
@@ -55,7 +51,6 @@
         app.sessionState.history = nav.history;
         MetroNode.sdk.main.pause(function () {
             // TODO: Pause actions
-            console.log("sdk:paused");
         });
     };
 

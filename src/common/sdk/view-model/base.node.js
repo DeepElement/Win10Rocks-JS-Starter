@@ -3,7 +3,7 @@
 
 // Constructor
 function BaseViewModel(options) {
-    loggingProvider.log("BaseViewModel:Constructor");
+
 }
 
 // class methods
@@ -13,15 +13,12 @@ var instanceMembers = {
             return this._data;
         },
         set: function (val) {
-            console.log("viewModel:data:set");
             this._data = val;
             this.dispatchEvent('data');
             this.onDataSet();
         }
     },
     onDataSet: function () {
-        console.log("viewModel:onDataSet");
-
         // TODO: Catch view load timeouts
         /*windowHelper.setTimeout(function () {
             if (!that._onDataLoadedFlag) {

@@ -5,7 +5,6 @@
 
 // Constructor
 function SettingsViewModel(options) {
-    loggingProvider.log("SettingsViewModel:created");
 }
 
 var instanceMembers = {

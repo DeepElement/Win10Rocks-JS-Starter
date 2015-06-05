@@ -1,5 +1,4 @@
 ﻿var async = require('async'),
-    winJSHelper = require('./helper/winjs.node'),
     windowHelper = require('./helper/window.node'),
     config = require('./helper/config.node'),
     path = require('path'),
@@ -9,7 +8,6 @@ require('./runtime.node');
 require('./setup.node');
 
 exports.load = function (done) {
-    //console.log("Main:load");
     async.waterfall([
          function (cb) {
              // Load Configurations
@@ -28,49 +26,77 @@ exports.load = function (done) {
         if (err)
             return done(err);
 
-        winJSHelper.registerBindingMode();
-
         async.each(exports.getServices(),
             function (item, itemCb) {
                 item.load(itemCb);
             },
             function (err) {
-                return done(err);
+                if (err)
+                    return done(err);
+
+                var messageService = exports.getComponent("messageService");
+                messageService.send("ApplicationLifeCycleMessage", {
+                    phase: "load"
+                });
+
+                return done();
             });
     });
 
 }
 
 exports.unload = function (done) {
-    //console.log("Main:unload");
-
     async.each(exports.getServices(),
         function (item, itemCb) {
             item.unload(itemCb);
         },
         function (err) {
-            return done(err);
+            if (err)
+                return done(err);
+
+            var messageService = exports.getComponent("messageService");
+            messageService.send("ApplicationLifeCycleMessage", {
+                phase: "unload"
+            });
+
+            return done();
         });
 }
 
 exports.pause = function (done) {
-    //console.log("Main:pause");
-
     async.each(exports.getServices(),
     function (item, itemCb) {
         item.pause(itemCb);
     },
-    done);
+    function (err) {
+        if (err)
+            return done(err);
+
+        var messageService = exports.getComponent("messageService");
+        messageService.send("ApplicationLifeCycleMessage", {
+            phase: "pause"
+        });
+
+        return done();
+    });
 }
 
 exports.resume = function (done) {
-    //console.log("Main:resume");
-
     async.each(exports.getServices(),
         function (item, itemCb) {
             item.resume(itemCb);
         },
-        done);
+         function (err) {
+             if (err)
+                 return done(err);
+
+             var messageService = exports.getComponent("messageService");
+             messageService.send("ApplicationLifeCycleMessage", {
+                 phase: "resume"
+             });
+
+             return done();
+         });
 }
 
 exports.getServices = function () {

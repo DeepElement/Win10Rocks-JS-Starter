@@ -20,11 +20,9 @@ var members = {
 
     onNavigateToMessage: function (messageType, args) {
         var viewKey = args.viewKey || null;
-        console.log("navigationService:onNavigateToMessage:" + viewKey);
         if (viewKey) {
             viewKey = viewKey.toLowerCase();
             var navigationProvider = main.getComponent("navigationProvider");
-            console.log(navigationProvider);
             navigationProvider.navigate(viewKey, args.state);
         }
     },

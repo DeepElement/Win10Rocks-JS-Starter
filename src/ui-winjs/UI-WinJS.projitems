@@ -7,9 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)app.js" />
-    <Content Include="$(MSBuildThisFileDirectory)components\navigationProvider.js" />
-    <Content Include="$(MSBuildThisFileDirectory)components\networkProvider.js" />
-    <Content Include="$(MSBuildThisFileDirectory)components\viewHandler.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\helpers.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\hooks.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\provider\navigation.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\provider\network.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
     <Content Include="$(MSBuildThisFileDirectory)entry.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\logo.scale-100.png" />
