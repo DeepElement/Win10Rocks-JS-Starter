@@ -2,7 +2,9 @@
   "name": "Win10Rocks-JS-Starter-App",
   "version": "0.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha --recursive"
+  },
   "author": "",
   "license": "",
   "dependencies": {

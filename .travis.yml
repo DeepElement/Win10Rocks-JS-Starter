@@ -1,4 +1,4 @@
 language: node_js
 node_js:
   - "0.10.33"
-script: node_modules/mocha/bin/mocha --recursive test
+script: npm test
