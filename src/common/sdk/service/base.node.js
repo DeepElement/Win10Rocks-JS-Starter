@@ -18,4 +18,4 @@ var members = {
 };
 
 module.exports = window.Class.define(baseService, members);
-window.Class.mix(module.exports, WinJS.Utilities.eventMixin);
+window.Class.mix(module.exports, window.Class.Utilities.eventMixin);

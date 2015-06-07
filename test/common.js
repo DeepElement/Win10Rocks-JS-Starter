@@ -58,10 +58,6 @@ beforeEach(function (done) {
         
         deleteRequireModulesInPath(path.join(__dirname, ".."));
         
-        // INCLUDE JS RUNTIME
-        // TODO: remove
-        includeScript(__dirname + '/../src/ui-winjs/vendor/WinJS-4.0.0-preview/js/WinJS.js');
-        
         return done();
     });
 });

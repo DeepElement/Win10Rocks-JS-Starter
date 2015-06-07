@@ -34,4 +34,4 @@ var instanceMembers = {
 
 // export the class
 module.exports = window.Class.define(BaseViewModel, instanceMembers);
-window.Class.mix(module.exports, WinJS.Utilities.eventMixin);
+window.Class.mix(module.exports, window.Class.Utilities.eventMixin);
