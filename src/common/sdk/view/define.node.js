@@ -131,7 +131,7 @@ module.exports = function (template, viewModelType, scope) {
     };
 
     var viewClazz = WinJS.UI.Pages.define(template, scope);
-    WinJS.Class.mix(viewClazz, WinJS.Utilities.eventMixin);
+    window.Class.mix(viewClazz, WinJS.Utilities.eventMixin);
 
     return viewClazz;
 }

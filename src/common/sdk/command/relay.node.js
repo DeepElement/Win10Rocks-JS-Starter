@@ -8,9 +8,7 @@ function RelayCommand(payload, key) {
         return _self._internalExecute.apply(_self, arguments);
     };
     _self.execute.supportedForProcessing = true;
-    _self.canExecute = WinJS.Binding.as({
-        value: true
-    });
+    _self.canExecute = true;
 }
 
 // RelayCommand Methods
@@ -20,5 +18,6 @@ var relayCommandMethods = {
     canExecute: null
 };
 
-module.exports = WinJS.Class.define(RelayCommand, relayCommandMethods, WinJS.Utilities.eventMixin);
-WinJS.Class.mix(module.exports, WinJS.Utilities.createEventProperties("onExecuteCompleted"));
+module.exports = window.Class.define(RelayCommand, relayCommandMethods);
+window.Class.mix(module.exports, WinJS.Utilities.eventMixin);
+window.Class.mix(module.exports, WinJS.Utilities.createEventProperties("onExecuteCompleted"));

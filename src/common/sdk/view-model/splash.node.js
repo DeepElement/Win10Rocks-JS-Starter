@@ -24,9 +24,5 @@ var instanceMembers = {
     }
 };
 
-var staticMembers = {
-
-};
-
-module.exports = WinJS.Class.derive(baseViewModel,
-    SplashViewModel, instanceMembers, staticMembers);
+module.exports = window.Class.derive(baseViewModel,
+    SplashViewModel, instanceMembers);

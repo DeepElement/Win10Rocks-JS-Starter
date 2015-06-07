@@ -1,5 +1,4 @@
-﻿var classHelper = require('../helper/class.node'),
-    main = require('../main.node'),
+﻿var main = require('../main.node'),
     async = require('async');
 
 var messageService = function (options) {
@@ -109,10 +108,6 @@ var members = {
                 });
         }
     }
-}
+};
 
-var staticMembers = {
-
-}
-
-module.exports = classHelper.derive(require('./base.node'), messageService, members, staticMembers);
+module.exports = window.Class.derive(require('./base.node'), messageService, members);

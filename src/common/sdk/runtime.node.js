@@ -27,35 +27,11 @@ Array.prototype.contains = function(target, ordered) {
     }
 };
 
-Function.prototype.inheritsFrom = function( parentClassOrObject ){ 
-	if ( parentClassOrObject.constructor == Function ) 
-	{ 
-		//Normal Inheritance 
-		this.prototype = new parentClassOrObject;
-		this.prototype.constructor = this;
-		this.prototype.super = parentClassOrObject.prototype;
-	} 
-	else 
-	{ 
-		//Pure Virtual Inheritance 
-		this.prototype = parentClassOrObject;
-		this.prototype.constructor = this;
-		this.prototype.super = parentClassOrObject;
-	} 
-	return this;
-};
-
 window.Class = window.Class || {};
 
 window.Class.define = window.Class.define || function(_constructor, methods){
     _constructor.prototype.constructor = _constructor;
-    for(var propertyKey in methods)
-    {
-        if(methods[propertyKey] && (methods[propertyKey]["get"] || methods[propertyKey]["set"]))
-            Object.defineProperty(_constructor.prototype, propertyKey, methods[propertyKey]);
-        else
-        _constructor.prototype[propertyKey] = methods[propertyKey];
-    }
+    window.Class.mix(_constructor, methods);
     return _constructor;
 };
 
@@ -72,7 +48,13 @@ window.Class.derive = window.Class.derive || function(parentClassDef, childClass
     return window.Class.define(childClassConstructor, childClassMethods);
 };
 
-window.Class.extend = window.Class.extend || function(){
-    
+window.Class.mix = window.Class.mix || function(classDef, mixinDef){
+    for(var propertyKey in mixinDef)
+    {
+        if(mixinDef[propertyKey] && (mixinDef[propertyKey]["get"] || mixinDef[propertyKey]["set"]))
+            Object.defineProperty(classDef.prototype, propertyKey, mixinDef[propertyKey]);
+        else
+        classDef.prototype[propertyKey] = mixinDef[propertyKey];
+    }
 };
 

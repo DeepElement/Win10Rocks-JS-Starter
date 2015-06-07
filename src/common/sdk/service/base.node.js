@@ -1,6 +1,4 @@
-﻿var classHelper = require('../helper/class.node');
-
-var baseService = function (options) {
+﻿var baseService = function (options) {
 
 }
 
@@ -17,11 +15,7 @@ var members = {
     unload: function (done) {
         return done();
     }
-}
+};
 
-var staticMembers = {
-
-}
-
-module.exports = classHelper.define(baseService, members, staticMembers);
-WinJS.Class.mix(module.exports, WinJS.Utilities.eventMixin);
+module.exports = window.Class.define(baseService, members);
+window.Class.mix(module.exports, WinJS.Utilities.eventMixin);

@@ -26,9 +26,5 @@ var instanceMembers = {
     }
 };
 
-var staticMembers = {
-
-};
-
-module.exports = WinJS.Class.derive(baseViewModel,
-    SettingsViewModel, instanceMembers, staticMembers);
+module.exports = window.Class.derive(baseViewModel,
+    SettingsViewModel, instanceMembers);

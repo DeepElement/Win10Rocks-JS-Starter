@@ -1,5 +1,4 @@
-﻿var classHelper = require('../helper/class.node'),
-    main = require('../main.node'),
+﻿var main = require('../main.node'),
     base = require('./base.node');
 
 var navigationService = function (options) {
@@ -35,8 +34,5 @@ var members = {
     }
 }
 
-var staticMembers = {
 
-}
-
-module.exports = classHelper.derive(base, navigationService, members, staticMembers);
+module.exports = window.Class.derive(base, navigationService, members);

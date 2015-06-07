@@ -30,12 +30,8 @@ var instanceMembers = {
             }
         }, config.get("behaviors:viewLoadTimeout"));*/
     }
-}
-
-var staticMembers = {
-
-}
+};
 
 // export the class
-module.exports = WinJS.Class.define(BaseViewModel, instanceMembers, staticMembers);
-WinJS.Class.mix(module.exports, WinJS.Utilities.eventMixin);
+module.exports = window.Class.define(BaseViewModel, instanceMembers);
+window.Class.mix(module.exports, WinJS.Utilities.eventMixin);
