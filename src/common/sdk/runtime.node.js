@@ -64,8 +64,11 @@ window.Class.derive = window.Class.derive || function(parentClassDef, childClass
     var copyOfParent = Object.create(parentClassDef.prototype);
     copyOfParent.constructor = childClassConstructor;
     childClassConstructor.prototype = copyOfParent;
+    
+    // super/base exposed for profit
     childClassMethods.super = parentClassDef;
     childClassMethods.base = parentClassDef.prototype;
+    
     return window.Class.define(childClassConstructor, childClassMethods);
 };
 
