@@ -27,7 +27,7 @@ gulp.task("build-win10",
     });
 
 gulp.task("build-win10-package", function () {
-    return gulp.src("./Win10Rocks-JS-Starter.sln")
+    return gulp.src("./Win10Rocks-JS-Starter-Win10.sln")
         .pipe(msbuild({
         targets: ['Clean', 'Build'],
         toolsVersion: 14.0,
