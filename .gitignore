@@ -200,3 +200,6 @@ FakesAssemblies/
 
 #MetroNode
 .metro.node.js
+
+#Windows 10
+BundleArtifacts
