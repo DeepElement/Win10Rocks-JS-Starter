@@ -9,6 +9,7 @@
     <Content Include="$(MSBuildThisFileDirectory)app.js" />
     <Content Include="$(MSBuildThisFileDirectory)components\helpers.js" />
     <Content Include="$(MSBuildThisFileDirectory)components\hooks.js" />
+    <Content Include="$(MSBuildThisFileDirectory)components\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)components\provider\navigation.js" />
     <Content Include="$(MSBuildThisFileDirectory)components\provider\network.js" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
@@ -27,7 +28,6 @@
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.html" />
     <Content Include="$(MSBuildThisFileDirectory)view\home\home.js" />
-    <Content Include="$(MSBuildThisFileDirectory)view\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.css" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.html" />
     <Content Include="$(MSBuildThisFileDirectory)view\settings\settings.js" />

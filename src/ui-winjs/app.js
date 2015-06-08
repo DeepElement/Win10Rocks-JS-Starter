@@ -38,5 +38,5 @@ loadResource("/components/helpers.js", 'script');
 loadResource("/components/hooks.js", 'script');
 loadResource("/components/provider/navigation.js", 'script');
 loadResource("/components/provider/network.js", 'script');
+loadResource("/components/navigator.js", 'script');
 loadResource("/entry.js", 'script');
-loadResource("/view/navigator.js", 'script');
