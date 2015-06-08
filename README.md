@@ -38,6 +38,9 @@ Prefix Gulp command with variable (e.g. `Version_Major=1 gulp build-win10`)
 - `gulp build-win10`
 	- Test package deployed at ./publish/win10/*_Test
 	- OneStore package at ./publish/win10/*.appxupload
+- `gulp build-win8.1`
+	- Test package deployed at ./publish/win8.1/*_Test
+	- OneStore package at ./publish/win8.1/*.appxupload
 
 #Known Issues
 
