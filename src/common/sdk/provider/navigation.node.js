@@ -6,6 +6,9 @@ var NavigationProvider = function (options) {
 var members = {
     navigate: function (viewKey, state) {
         throw new Error("not-implemented");
+    },
+    definePage: function (template, viewDef) {
+        throw new Error("not-implemented");
     }
 };
 

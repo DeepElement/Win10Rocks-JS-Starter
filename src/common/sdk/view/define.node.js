@@ -1,4 +1,4 @@
-﻿var ioc = require('../main.node').ioc,
+﻿var ioc = require('../helper/ioc.node'),
     config = require("../helper/config.node"),
     main = require('../main.node'),
     windowHelper = require('../helper/window.node'),
@@ -133,7 +133,9 @@ module.exports = function (template, viewModelType, scope) {
         }
     };
 
-    var viewClazz = WinJS.UI.Pages.define(template, scope);
+    var navigationProvider = ioc.get("navigationProvider");
+    console.log(navigationProvider);
+    var viewClazz = navigationProvider.definePage(template, scope);
     classHelper.mix(viewClazz, utilityHelper.eventMixin);
 
     return viewClazz;

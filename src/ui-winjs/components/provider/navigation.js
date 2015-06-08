@@ -7,6 +7,9 @@ var members = {
             viewKey: viewKey,
             state: state
         });
+    },
+    definePage: function (template, viewDef) {
+        return WinJS.UI.Pages.define(template, viewDef);
     }
 }
 
