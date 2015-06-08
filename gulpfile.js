@@ -1,16 +1,18 @@
 var gulp = require('gulp'),
     msbuild = require("gulp-msbuild"),
     mocha = require("gulp-mocha"),
-    replace = require('gulp-replace');
+    replace = require('gulp-replace'),
+    rimraf = require('rimraf'),
+    runSequence = require('run-sequence');
 
 var parseEnv = function () {
     return {
         version:
         {
-            major: 0,
-            minor: 0,
-            revision: 0,
-            build: 1
+            major: process.env.Version_Major || 0,
+            minor:  process.env.Version_Minor || 0,
+            revision:  process.env.Version_Revision || 0,
+            build:  process.env.Version_Build || 1,
         }
     };
 };
@@ -19,7 +21,12 @@ gulp.task('default', function () {
     // place code for your default task here
 });
 
-gulp.task("build-windows-10", ["build-windows-version"], function () {
+gulp.task("build-win10", 
+    function(cb){
+       runSequence( "clean", "build-windows-version", "build-win10-package", "build-win10-deploy", cb); 
+    });
+
+gulp.task("build-win10-package", function () {
     return gulp.src("./Win10Rocks-JS-Starter.sln")
         .pipe(msbuild({
         targets: ['Clean', 'Build'],
@@ -28,6 +35,11 @@ gulp.task("build-windows-10", ["build-windows-version"], function () {
             AppxBundle: 'Always'
         }
     }));
+});
+
+gulp.task("build-win10-deploy", function () {
+   gulp.src('./src/app-universal/AppPackages/**/*')
+   .pipe(gulp.dest('./publish/win10'));
 });
 
 gulp.task("build-windows-version", function () {
@@ -40,6 +52,11 @@ gulp.task("build-windows-version", function () {
         .pipe(replace(/\sVersion=\"[^\"]+\"\s/, ' Version=\"' + buildNum + '\" '))
         .pipe(gulp.dest('./'));
 });
+
+gulp.task("clean", function (cb) {
+    rimraf('./publish/win10', cb);
+});
+
 
 gulp.task("test", function () {
     return gulp.src('test/**/*.js', { read: false })

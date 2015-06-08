@@ -21,13 +21,26 @@ Features:
 - run `npm install` in the repo root
 - run `npm install` in the test folder 
 
-#Development Guide
+#Building
 
-## Tests
-Using http://sinonjs.org/ and http://mochajs.org/
+##Enviromental Variables
+Prefix Gulp command with variable (e.g. `Version_Major=1 gulp build-win10`)
+
+- `Version_Major`
+- `Version_Minor`
+- `Version_Revision`
+- `Version_Build`
+
+##Targets
+
+- `gulp clean` 
+	- deletes ./publish
+- `gulp build-win10`
+	- Test package deployed at ./publish/win10/*_Test
+	- OneStore package at ./publish/win10/*.appxupload
 
 
 #Known Issues
 
 - Mocha Debugger Broken for some environments - https://github.com/Microsoft/nodejstools/issues/79
-
+- 
