@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "app-win8", "src\app-win8\app-win8.jsproj", "{AAD4D172-8701-48BF-82BD-68A96955BDBB}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "app-win8.1", "src\app-win8.1\app-win8.1.jsproj", "{AAD4D172-8701-48BF-82BD-68A96955BDBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
