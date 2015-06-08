@@ -1,7 +1,8 @@
 ﻿var loggingProvider = require('../provider/logging.node'),
     baseViewModel = require('./base.node'),
     relayCommand = require('../command/relay.node'),
-    main = require("../main.node");
+    main = require("../main.node"),
+    classHelper = require('../helper/class.node');
 
 // Constructor
 function HomeViewModel(options) {
@@ -26,5 +27,5 @@ var instanceMembers = {
     }
 };
 
-module.exports = window.Class.derive(baseViewModel,
+module.exports = classHelper.derive(baseViewModel,
     HomeViewModel, instanceMembers);

@@ -1,5 +1,7 @@
 ﻿var loggingProvider = require('../provider/logging.node'),
-    main = require("../main.node");
+    main = require("../main.node"),
+    classHelper = require('../helper/class.node'),
+    utilityHelper = require('../helper/utilities.node');
 
 // Constructor
 function BaseViewModel(options) {
@@ -33,5 +35,5 @@ var instanceMembers = {
 };
 
 // export the class
-module.exports = window.Class.define(BaseViewModel, instanceMembers);
-window.Class.mix(module.exports, window.Class.Utilities.eventMixin);
+module.exports = classHelper.define(BaseViewModel, instanceMembers);
+classHelper.mix(module.exports, utilityHelper.eventMixin);

@@ -1,4 +1,6 @@
-﻿var NetworkProvider = function (options) {
+﻿var classHelper = require('../helper/class.node');
+
+var NetworkProvider = function (options) {
 };
 
 var members = {
@@ -7,4 +9,4 @@ var members = {
     }
 };
 
-module.exports = window.Class.define(NetworkProvider, members);
+module.exports = classHelper.define(NetworkProvider, members);

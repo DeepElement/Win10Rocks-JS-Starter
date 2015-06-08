@@ -1,4 +1,7 @@
-﻿// RelayCommand Constructor
+﻿var classHelper = require('../helper/class.node'),
+    utilityHelper = require('../helper/utilities.node');
+
+// RelayCommand Constructor
 // ----------------------
 function RelayCommand(payload, key) {
     var _self = this;
@@ -18,6 +21,6 @@ var relayCommandMethods = {
     canExecute: null
 };
 
-module.exports = window.Class.define(RelayCommand, relayCommandMethods);
-window.Class.mix(module.exports, WinJS.Utilities.eventMixin);
-window.Class.mix(module.exports, WinJS.Utilities.createEventProperties("onExecuteCompleted"));
+module.exports = classHelper.define(RelayCommand, relayCommandMethods);
+classHelper.mix(module.exports, utilityHelper.eventMixin);
+classHelper.mix(module.exports, utilityHelper.createEventProperties("onExecuteCompleted"));

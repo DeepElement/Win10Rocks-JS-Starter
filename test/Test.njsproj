@@ -30,12 +30,15 @@
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="unit\helper\class.js" />
+    <Compile Include="unit\service\message.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="integration\" />
     <Folder Include="integration\sdk\" />
     <Folder Include="unit\" />
     <Folder Include="unit\helper\" />
+    <Folder Include="unit\service\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />

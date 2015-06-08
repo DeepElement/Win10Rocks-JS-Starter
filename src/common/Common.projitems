@@ -7,9 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)sdk\command\relay.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\config.node.js" />
-    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\window.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\class.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\config.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\utilities.node.js" />
+    <Content Include="$(MSBuildThisFileDirectory)sdk\helper\window.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\helper\ioc.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\main.node.js" />
     <Content Include="$(MSBuildThisFileDirectory)sdk\provider\logging.node.js" />

@@ -1,7 +1,10 @@
 ﻿var ioc = require('../main.node').ioc,
     config = require("../helper/config.node"),
     main = require('../main.node'),
-    windowHelper = require('../helper/window.node');
+    windowHelper = require('../helper/window.node'),
+    classHelper = require('../helper/class.node'),
+    utilityHelper = require('../helper/utilities.node');
+
 
 module.exports = function (template, viewModelType, scope) {
     var baseViewOverrides = {
@@ -131,7 +134,7 @@ module.exports = function (template, viewModelType, scope) {
     };
 
     var viewClazz = WinJS.UI.Pages.define(template, scope);
-    window.Class.mix(viewClazz, WinJS.Utilities.eventMixin);
+    classHelper.mix(viewClazz, utilityHelper.eventMixin);
 
     return viewClazz;
 }

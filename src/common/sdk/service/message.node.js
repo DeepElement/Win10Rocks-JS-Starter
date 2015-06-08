@@ -1,5 +1,6 @@
 ﻿var main = require('../main.node'),
-    async = require('async');
+    async = require('async'),
+    classHelper = require('../helper/class.node');
 
 var messageService = function (options) {
     this._registry = [];
@@ -110,4 +111,4 @@ var members = {
     }
 };
 
-module.exports = window.Class.derive(require('./base.node'), messageService, members);
+module.exports = classHelper.derive(require('./base.node'), messageService, members);

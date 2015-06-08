@@ -43,7 +43,7 @@ exports.load = function (done) {
             });
     });
 
-}
+};
 
 exports.unload = function (done) {
     async.each(exports.getServices(),
@@ -61,7 +61,7 @@ exports.unload = function (done) {
 
             return done();
         });
-}
+};
 
 exports.pause = function (done) {
     async.each(exports.getServices(),
@@ -79,7 +79,7 @@ exports.pause = function (done) {
 
         return done();
     });
-}
+};
 
 exports.resume = function (done) {
     async.each(exports.getServices(),
@@ -97,7 +97,7 @@ exports.resume = function (done) {
 
              return done();
          });
-}
+};
 
 exports.getServices = function () {
     var keys = ioc.getRegisteredKeys().filter(function (k) {
@@ -108,7 +108,7 @@ exports.getServices = function () {
         instances.push(ioc.get(k));
     });
     return instances;
-}
+};
 
 exports.getProviders = function () {
     var keys = ioc.getRegisteredKeys().filter(function (k) {
@@ -119,16 +119,16 @@ exports.getProviders = function () {
         instances.push(ioc.get(k));
     });
     return instances;
-}
+};
 
 exports.getComponent = function (name) {
     return ioc.get(name);
-}
+};
 
 exports.getAllComponentInstances = function () {
     return ioc.getAllInstances();
-}
+};
 
 exports.overrideComponent = function (name, type) {
     return ioc.override(name, type);
-}
+};

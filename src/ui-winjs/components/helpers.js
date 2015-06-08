@@ -25,6 +25,8 @@
                     };
 
                     //monitors canExecute
+                    if (command["canExecute"] && !command["canExecute"].value)
+                        command["canExecute"] = WinJS.Binding.as({ value: command["canExecute"] });
                     command["canExecute"].bind("value", function (isEnabled) {
                         if (isEnabled) {
                             WinJS.Utilities.removeClass(eventSource, 'win-command-disabled');

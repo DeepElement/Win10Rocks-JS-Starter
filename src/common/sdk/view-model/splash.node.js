@@ -1,6 +1,7 @@
 ﻿var loggingProvider = require('../provider/logging.node'),
     baseViewModel = require('./base.node'),
     main = require("../main.node"),
+    classHelper = require('../helper/class.node'),
     windowHelper = require('../helper/window.node');
 
 // Constructor
@@ -24,5 +25,5 @@ var instanceMembers = {
     }
 };
 
-module.exports = window.Class.derive(baseViewModel,
+module.exports = classHelper.derive(baseViewModel,
     SplashViewModel, instanceMembers);

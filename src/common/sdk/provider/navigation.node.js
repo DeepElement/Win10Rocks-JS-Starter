@@ -1,4 +1,6 @@
-﻿var NavigationProvider = function (options) {
+﻿var classHelper = require('../helper/class.node');
+
+var NavigationProvider = function (options) {
 }
 
 var members = {
@@ -7,4 +9,4 @@ var members = {
     }
 };
 
-module.exports = window.Class.define(NavigationProvider, members);
+module.exports = classHelper.define(NavigationProvider, members);
