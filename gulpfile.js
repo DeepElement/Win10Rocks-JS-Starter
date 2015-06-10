@@ -5,6 +5,9 @@ var gulp = require('gulp'),
     rimraf = require('rimraf'),
     runSequence = require('run-sequence');
 
+require('./build/gulp.universal');
+require('./build/gulp.win8.1');
+
 var parseEnv = function () {
     return {
         version:
@@ -19,49 +22,6 @@ var parseEnv = function () {
 
 gulp.task('default', function () {
     // place code for your default task here
-});
-
-
-gulp.task("build-win8.1", 
-    function(cb){
-       runSequence( "clean", "build-windows-version", "build-win8.1-package", "build-win8.1-deploy", cb); 
-    });
-
-gulp.task("build-win10", 
-    function(cb){
-       runSequence( "clean", "build-windows-version", "build-win10-package", "build-win10-deploy", cb); 
-    });
-    
-gulp.task("build-win8.1-package", function () {
-    return gulp.src("./Win10Rocks-JS-Starter-win8.1.sln")
-        .pipe(msbuild({
-        targets: ['Clean', 'Build'],
-        toolsVersion: 14.0,
-        properties: {
-            AppxBundle: 'Always'
-        }
-    }));
-});
-
-gulp.task("build-win10-package", function () {
-    return gulp.src("./Win10Rocks-JS-Starter-Win10.sln")
-        .pipe(msbuild({
-        targets: ['Clean', 'Build'],
-        toolsVersion: 14.0,
-        properties: {
-            AppxBundle: 'Always'
-        }
-    }));
-});
-
-gulp.task("build-win10-deploy", function () {
-   gulp.src('./src/app-universal/AppPackages/**/*')
-   .pipe(gulp.dest('./publish/win10'));
-});
-
-gulp.task("build-win8.1-deploy", function () {
-   gulp.src('./src/app-win8.1/AppPackages/**/*')
-   .pipe(gulp.dest('./publish/win8.1'));
 });
 
 gulp.task("build-windows-version", function () {
