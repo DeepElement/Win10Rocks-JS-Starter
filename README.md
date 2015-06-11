@@ -7,9 +7,10 @@ Features:
 
 - CommonJS Business Layer (NodeJS friendly!)
 - Visual Studio 2015 Test Runner Mocha integration
-- Svelte Application Architecture (Service, Provider, Helper pattern)
-- Lean-and-Mean Inversion-of-Control API
-- Windows 10 Compatible Navigation
+- Svelte Application Architecture (Service, Provider, Helper, Messages)
+- MVVM Support (ViewBase, ViewModelBase, Commands, Events)
+- Indexed Memory Storage with [LokiJS](https://github.com/techfort/LokiJS) (supports momento with Storage Provider)
+- Message-based Navigation Architecture (Data Posting, View/ViewModel Life-Cycle, BackStack)
 
 #Setup
 - Install Visual Studio 2015 RC
