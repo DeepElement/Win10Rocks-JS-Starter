@@ -37,3 +37,4 @@ var instanceMembers = {
 // export the class
 module.exports = classHelper.define(BaseViewModel, instanceMembers);
 classHelper.mix(module.exports, utilityHelper.eventMixin);
+classHelper.mix(module.exports, utilityHelper.timerMixin);

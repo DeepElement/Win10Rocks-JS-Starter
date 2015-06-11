@@ -22,3 +22,4 @@ var members = {
 
 module.exports = classHelper.define(_constructor, members);
 classHelper.mix(module.exports, utilityHelper.eventMixin);
+classHelper.mix(module.exports, utilityHelper.timerMixin);

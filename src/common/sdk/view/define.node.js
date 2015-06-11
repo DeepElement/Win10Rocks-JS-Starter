@@ -137,6 +137,7 @@ module.exports = function (template, viewModelType, scope) {
     console.log(navigationProvider);
     var viewClazz = navigationProvider.definePage(template, scope);
     classHelper.mix(viewClazz, utilityHelper.eventMixin);
+    classHelper.mix(module.exports, utilityHelper.timerMixin);
 
     return viewClazz;
-}
+};

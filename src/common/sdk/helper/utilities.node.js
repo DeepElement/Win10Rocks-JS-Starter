@@ -33,39 +33,71 @@ module.exports = {
         }
         return props;
     },
+    timerMixin: {
+        setTimeout: function (delegate, duration) {
+            var _self = this;
+            return setTimeout(function () {
+                if (!_self.pendingDispose) {
+                    return delegate();
+                }
+            }, duration);
+        },
+
+        setInterval: function (delegate, duration) {
+            var _self = this;
+            return setInterval(function () {
+                if (!_self.pendingDispose) {
+                    return delegate();
+                }
+            }, duration);
+        },
+
+        setImmediate: function (delegate) {
+            var _self = this;
+            return setImmediate(function () {
+                if (!_self.pendingDispose) {
+                    return delegate();
+                }
+            });
+        },
+
+        clearTimeout: function (timerId) {
+            return clearTimeout(timerId);
+        }
+    },
     eventMixin: {
         _listeners: null,
         _EventMixinEvent: classHelper.define(
-             function (type, detail, target) {
-                 this.detail = detail;
-                 this.target = target;
-                 this.timeStamp = Date.now();
-                 this.type = type;
-             },
-             {
-                 bubbles: { value: false, writable: false },
-                 cancelable: { value: false, writable: false },
-                 currentTarget: {
-                     get: function () { return this.target; }
-                 },
-                 defaultPrevented: {
-                     get: function () { return this._preventDefaultCalled; }
-                 },
-                 trusted: { value: false, writable: false },
-                 eventPhase: { value: 0, writable: false },
-                 target: null,
-                 timeStamp: null,
-                 type: null,
+            function (type, detail, target) {
+                this.detail = detail;
+                this.target = target;
+                this.timeStamp = Date.now();
+                this.type = type;
+            },
+            {
+                bubbles: { value: false, writable: false },
+                cancelable: { value: false, writable: false },
+                currentTarget: {
+                    get: function () { return this.target; }
+                },
+                defaultPrevented: {
+                    get: function () { return this._preventDefaultCalled; }
+                },
+                trusted: { value: false, writable: false },
+                eventPhase: { value: 0, writable: false },
+                target: null,
+                timeStamp: null,
+                type: null,
 
-                 preventDefault: function () {
-                     this._preventDefaultCalled = true;
-                 },
-                 stopImmediatePropagation: function () {
-                     this._stopImmediatePropagationCalled = true;
-                 },
-                 stopPropagation: function () {
-                 }
-             }),
+                preventDefault: function () {
+                    this._preventDefaultCalled = true;
+                },
+                stopImmediatePropagation: function () {
+                    this._stopImmediatePropagationCalled = true;
+                },
+                stopPropagation: function () {
+                }
+            }),
 
         addEventListener: function (type, listener, useCapture) {
             useCapture = useCapture || false;
