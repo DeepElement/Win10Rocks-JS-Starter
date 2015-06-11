@@ -9,8 +9,9 @@ Features:
 - Visual Studio 2015 Test Runner Mocha integration
 - Svelte Application Architecture (Service, Provider, Helper, Messages)
 - MVVM Support (ViewBase, ViewModelBase, Commands, Events)
-- Indexed Memory Storage with [LokiJS](https://github.com/techfort/LokiJS) (supports momento with Storage Provider)
+- Indexed Memory Storage with [LokiJS]( (supports momento with Storage Provider)
 - Message-based Navigation Architecture (Data Posting, View/ViewModel Life-Cycle, BackStack)
+- Bring-Your-Own-UI (WinJS 4.0 included by default)
 
 #Setup
 - Install Visual Studio 2015 RC
