@@ -1,4 +1,5 @@
 var main = require('../main.node'),
+    ioc = require('../helper/ioc.node'),
     async = require('async'),
     base = require('./base.node'),
     classHelper = require('../helper/class.node'),
@@ -35,14 +36,31 @@ module.exports = classHelper.derive(require('./base.node'), _constructor, member
 
 /// Loki Storage Adapter
 var lokiStorageAdapter = classHelper.define(function () { }, {
-    _store: {},
+    _storageProvider: null,
+    _lokiStorageKey: "-lokiStorage.json",
     loadDatabase: function (dbname, callback) {
-        if (this._store[dbname])
-            return callback(this._store[dbname]);
-        return callback();
+        if (!this._storageProvider)
+            this._storageProvider = ioc.get("storageProvider");
+        var dbStorageKey = dbname + this._lokiStorageKey;
+        this._storageProvider.fetch(dbStorageKey,
+            function (err, resp) {
+                if (err)
+                {
+                    if(err === 'does-not-exist')
+                        return callback();
+                    return callback(err);
+                }
+                return callback(resp);
+            });
     },
     saveDatabase: function (dbname, dbstring, callback) {
-        this._store[dbname] = dbstring;
-        return callback();
+        var dbStorageKey = dbname + this._lokiStorageKey;
+        this._storageProvider.save(dbStorageKey,
+            dbstring,
+            function (err) {
+                if (err)
+                    return callback(err);
+                return callback();
+            });
     }
 });
