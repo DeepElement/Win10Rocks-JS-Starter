@@ -2,7 +2,7 @@
     async = require('async'),
     classHelper = require('../helper/class.node');
 
-var messageService = function (options) {
+var _constructor = function (options) {
     this._registry = [];
     this._messageStack = [];
 }
@@ -111,4 +111,4 @@ var members = {
     }
 };
 
-module.exports = classHelper.derive(require('./base.node'), messageService, members);
+module.exports = classHelper.derive(require('./base.node'), _constructor, members);

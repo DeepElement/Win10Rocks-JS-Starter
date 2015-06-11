@@ -39,4 +39,4 @@ exports.loadScript = function (url, callback) {
 
     // Fire the loading
     head.appendChild(script);
-}
+};

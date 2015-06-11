@@ -1,7 +1,7 @@
 ﻿var classHelper = require('../helper/class.node');
 
-var NavigationProvider = function (options) {
-}
+var _constructor = function (options) {
+};
 
 var members = {
     navigate: function (viewKey, state) {
@@ -12,4 +12,4 @@ var members = {
     }
 };
 
-module.exports = classHelper.define(NavigationProvider, members);
+module.exports = classHelper.define(_constructor, members);

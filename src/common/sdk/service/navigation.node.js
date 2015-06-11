@@ -2,13 +2,12 @@
     base = require('./base.node'),
     classHelper = require('../helper/class.node');
 
-var navigationService = function (options) {
+var _constructor = function (options) {
 
-}
+};
 
 var members = {
     load: function (done) {
-        var that = this;
         base.prototype.load.call(this, function () {
             return done();
         });
@@ -33,7 +32,7 @@ var members = {
 
     onNavigatingMessage: function (messageType, args) {
     }
-}
+};
 
 
-module.exports = classHelper.derive(base, navigationService, members);
+module.exports = classHelper.derive(base, _constructor, members);

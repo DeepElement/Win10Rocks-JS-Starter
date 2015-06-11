@@ -16,5 +16,6 @@ config.assert("configuration");
 // Register container instances
 ioc.register("navigationService", require('./service/navigation.node'), "application");
 ioc.register("messageService", require('./service/message.node'), "application");
+ioc.register("dataService", require('./service/data.node'), "application");
 ioc.register("navigationProvider", require('./provider/navigation.node'), "request");
 ioc.register("networkProvider", require('./provider/network.node'), "request");

@@ -1,7 +1,7 @@
 ﻿var classHelper = require('../helper/class.node'),
     utilityHelper = require('../helper/utilities.node');
 
-var baseService = function (options) {
+var _constructor = function (options) {
 
 };
 
@@ -20,5 +20,5 @@ var members = {
     }
 };
 
-module.exports = classHelper.define(baseService, members);
+module.exports = classHelper.define(_constructor, members);
 classHelper.mix(module.exports, utilityHelper.eventMixin);
