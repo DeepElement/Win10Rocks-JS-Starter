@@ -22,14 +22,7 @@ var members = {
                 function (cb) {
                     that._lokiAdapter = ioc.get("lokiStorageProvider");
                     that._db = new loki(that._lokiDBKey, { adapter: that._lokiAdapter });
-                    var loadClosure = {
-                        events: {
-                            proto: function (options) {
-                                console.log('proto called');
-                            }
-                        }
-                    };
-                    that._db.loadDatabase(loadClosure,
+                    that._db.loadDatabase(require('../model/mapping.node'),
                         function (resp) {
                             if (resp === 'Database not found')
                                 that._db.saveDatabase();
@@ -44,7 +37,7 @@ var members = {
                 function (err) {
                     if (err)
                         return done(err);
-                    
+
                     // schedule the hydrator
                     that._hydrationTimer = that.setInterval(function () {
                         that._hydrate(false, function () { });
@@ -71,7 +64,7 @@ var members = {
                         // create events
                         resp.events.forEach(function (e) {
                             var item = that.eventCollection.findOne({ key: e.key });
-                            if (!item) 
+                            if (!item)
                                 that.eventCollection.insert(e);
                         });
                         return cb();
