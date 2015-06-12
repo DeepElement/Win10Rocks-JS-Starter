@@ -11,9 +11,9 @@ describe('Unit', function () {
                 // arrange/act
                 var subjectDef = resolver.resolve('sdk/provider/catalogue.node');
                 var subject = new subjectDef();
-               
+
                 // assert
-				should.exist(subject);
+                should.exist(subject);
             });
         });
     });

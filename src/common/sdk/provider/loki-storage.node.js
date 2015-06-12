@@ -18,13 +18,23 @@ var members = {
                         return callback();
                     return callback(err);
                 }
-                return callback(resp);
+                var resultStr = "";
+                if(!(typeof (resp.data) === 'string'))
+                    resultStr = JSON.stringify(resp.data);
+                else
+                    resultStr = String(resp.data);
+                return callback(resultStr);
             });
     },
     saveDatabase: function (dbname, dbstring, callback) {
         var dbStorageKey = dbname + this._lokiStorageKey;
+        var storageStr = "";
+        if(!(typeof (dbstring) === 'string'))
+                storageStr = JSON.stringify(dbstring);
+            else
+                storageStr = String(dbstring);
         this._storageProvider.save(dbStorageKey,
-            dbstring,
+            storageStr,
             function (err) {
                 if (err)
                     return callback(err);

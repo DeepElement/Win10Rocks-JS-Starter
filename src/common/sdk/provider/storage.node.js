@@ -1,7 +1,7 @@
 var classHelper = require('../helper/class.node');
 
 var _constructor = function (options) {
-	
+
 };
 
 var members = {
@@ -21,7 +21,7 @@ var members = {
 		return callback('does-not-exist');
 	},
 	list: function(callback){
-		// TODO: implement listing of all files managed 	
+		// TODO: implement listing of all files managed
 		return callback(null, this._memoryStore.map(function(a) {return a.key;}));
 	},
 	clear: function(callback){g
