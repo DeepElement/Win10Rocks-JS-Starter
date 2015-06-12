@@ -19,6 +19,7 @@ var members = {
     load: function(done) {
         var that = this;
         that._catalogueProvider = ioc.get("catalogueProvider");
+        that._lokiCatalogueProvider = ioc.get("lokiCatalogueProvider");
         base.prototype.load.call(this, function() {
             async.waterfall([
                     function(cb) {
@@ -35,7 +36,7 @@ var members = {
                     },
                     function(cb) {
                         // Run the first iteration of data hydration
-                        that._hydrate(true, cb);
+                        that._lokiCatalogueProvider.build(that._db, cb);
                     }
                 ],
                 function(err) {
@@ -46,6 +47,7 @@ var members = {
                     that._hydrationTimer = that.setInterval(function() {
                         that._hydrate(false, function() {});
                     }, 5000);
+
                     return done();
                 });
         });
@@ -55,49 +57,7 @@ var members = {
         var that = this;
         if (!that._hydrating) {
             that._hydrating = true;
-            async.waterfall([
-                    function(cb) {
-                        that._catalogueProvider.fetchFeedConfig({}, function(err, resp) {
-                            if (err)
-                                return cb(err);
-
-                            that._db.addCollection("events");
-                            that._db.addCollection("feedSources");
-                            that._db.addCollection("contributors");
-                            that._db.addCollection("media");
-
-                            resp.events.forEach(function(e) {
-                                var feedSourceKeys = [];
-
-                                // create event feed sources
-                                e.feeds.forEach(function(f) {
-                                    var item = that.feedSourceCollection.findOne({
-                                        key: f
-                                    });
-                                    if (!item) {
-                                        item = that.feedSourceCollection.insert(new feedSourceModel({
-                                            key: f,
-                                            address: f
-                                        }));
-                                    }
-                                    feedSourceKeys.push(item.key);
-                                });
-
-                                // create event record
-                                var eventItem = that.eventCollection.findOne({
-                                    key: e.name
-                                });
-                                if (!eventItem)
-                                    eventItem = that.eventCollection.insert(new eventModel({
-                                        key: e.name,
-                                        name: e.name,
-                                        feedSources: feedSourceKeys
-                                    }));
-                            });
-                            return cb();
-                        });
-                    }
-                ],
+            that._lokiCatalogueProvider.update(that._db,
                 function(err) {
                     that._hydrating = false;
                     return callback(err);
