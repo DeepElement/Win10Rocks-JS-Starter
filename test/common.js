@@ -61,3 +61,9 @@ beforeEach(function (done) {
         return done();
     });
 });
+
+afterEach(function(done){
+    var ioc = resolver.resolve('sdk/helper/ioc.node');
+    ioc.clear();
+    return done();
+});

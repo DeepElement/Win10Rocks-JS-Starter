@@ -6,14 +6,14 @@ var _scopes = ["application", "request"];
 var _validateScope = function (scope) {
     if (_scopes.indexOf(scope) == -1)
         throw new Error("Scope invalid");
-}
+};
 
 exports.override = function (key, clazz) {
     if (_registery[key]) {
         _registery[key].type = clazz;
         _registery[key].instances = [];
     }
-}
+};
 
 exports.register = function (key, clazz, scope) {
     _validateScope(scope);
@@ -23,14 +23,14 @@ exports.register = function (key, clazz, scope) {
         type: clazz,
         instances: []
     };
-}
+};
 
 exports.getRegisteredKeys = function () {
     var results = [];
     for (var key in _registery)
         results.push(key);
     return results;
-}
+};
 
 exports.getAllInstances = function () {
     var results = [];
@@ -43,7 +43,7 @@ exports.getAllInstances = function () {
         }
     }
     return results;
-}
+};
 
 exports.get = function (key) {
     if (!_registery[key])
@@ -69,7 +69,7 @@ exports.get = function (key) {
     }
 
     return appResult;
-}
+};
 
 exports.clear = function () {
     for (var registryKey in _registery) {
@@ -88,4 +88,4 @@ exports.clear = function () {
         delete instance;
     }
     _registery = {};
-}
+};

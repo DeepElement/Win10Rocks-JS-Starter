@@ -1,6 +1,7 @@
 var classHelper = require('../helper/class.node');
 
 var _constructor = function (options) {
+	console.log('model:event:constructor');
 	this._key = options.key;
 	this._name = options.name;
 };
@@ -18,4 +19,5 @@ var members = {
 	}
 };
 
+	
 module.exports = classHelper.define(_constructor, members);

@@ -36,29 +36,38 @@ module.exports = {
     timerMixin: {
         setTimeout: function (delegate, duration) {
             var _self = this;
-            return setTimeout(function () {
+            var timerId = setTimeout(function () {
                 if (!_self.pendingDispose) {
                     return delegate();
                 }
+                else
+                    clearTimeout(timerId);
             }, duration);
+            return timerId;
         },
 
         setInterval: function (delegate, duration) {
             var _self = this;
-            return setInterval(function () {
+            var intervalId = setInterval(function () {
                 if (!_self.pendingDispose) {
                     return delegate();
                 }
+                else
+                    clearTimeout(intervalId);
             }, duration);
+            return intervalId;
         },
 
         setImmediate: function (delegate) {
             var _self = this;
-            return setImmediate(function () {
+            var immediateId = setImmediate(function () {
                 if (!_self.pendingDispose) {
                     return delegate();
                 }
+                else
+                    clearTimeout(immediateId);
             });
+            return immediateId;
         },
 
         clearTimeout: function (timerId) {

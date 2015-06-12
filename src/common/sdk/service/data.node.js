@@ -16,47 +16,78 @@ var _constructor = function (options) {
 var members = {
     load: function (done) {
         var that = this;
+        that._catalogueProvider = ioc.get("catalogueProvider");
         base.prototype.load.call(this, function () {
             async.waterfall([
                 function (cb) {
-                    that._lokiAdapter = new lokiStorageAdapter();
+                    that._lokiAdapter = ioc.get("lokiStorageProvider");
                     that._db = new loki(that._lokiDBKey, { adapter: that._lokiAdapter });
-                    that._db.loadDatabase(require('../model/mapping.node'), function (resp) {
-                        if (resp === 'Database not found')
-                            that._db.saveDatabase();
-                        return cb();
-                    });
+                    var loadClosure = {
+                        events: {
+                            proto: function (options) {
+                                console.log('proto called');
+                            }
+                        }
+                    };
+                    that._db.loadDatabase(loadClosure,
+                        function (resp) {
+                            if (resp === 'Database not found')
+                                that._db.saveDatabase();
+                            return cb();
+                        });
                 },
                 function (cb) {
                     // Run the first iteration of data hydration
                     that._hydrate(true, cb);
                 }
             ],
-            function(err){
-                if(err)
-                    return done(err);
+                function (err) {
+                    if (err)
+                        return done(err);
                     
-                // schedule the hydrator
-                //that._hydrationTimer = that.setInterval(that._hydrate.bind(that),that._hydrationInterval);
-                
-                return done();
-            });
+                    // schedule the hydrator
+                    that._hydrationTimer = that.setInterval(function () {
+                        that._hydrate(false, function () { });
+                    }, 5000);
+                    return done();
+                });
         });
     },
 
     _hydrate: function (isStartup, callback) {
         var that = this;
-        if(!that._hydrating){
+        if (!that._hydrating) {
             that._hydrating = true;
-            
-            // TODO: fill the 
-            
-            that._hydrating = false;
+            async.waterfall([
+                function (cb) {
+                    that._catalogueProvider.fetchFeedConfig({}, function (err, resp) {
+                        if (err)
+                            return cb(err);
+
+                        that._db.addCollection("events");
+                        that._db.addCollection("contributors");
+                        that._db.addCollection("media");
+
+                        // create events
+                        resp.events.forEach(function (e) {
+                            var item = that.eventCollection.findOne({ key: e.key });
+                            if (!item) 
+                                that.eventCollection.insert(e);
+                        });
+                        return cb();
+                    });
+                }
+            ],
+                function (err) {
+                    that._hydrating = false;
+                    return callback(err);
+                });
         }
-        return callback();
+        else
+            return callback();
     },
 
-    contributorsCollection: {
+    contributorCollection: {
         get: function () {
             return this._db.getCollection("contributors");
         }
@@ -76,6 +107,8 @@ var members = {
 
     unload: function (done) {
         var that = this;
+        if (that._hydrationTimer)
+            that.clearTimeout(that._hydrationTimer);
         if (that._db)
             that._db.saveDatabase();
         return done();
@@ -83,33 +116,3 @@ var members = {
 };
 
 module.exports = classHelper.derive(require('./base.node'), _constructor, members);
-
-/// Loki Storage Adapter
-var lokiStorageAdapter = classHelper.define(function () { }, {
-    _storageProvider: null,
-    _lokiStorageKey: "-lokiStorage.json",
-    loadDatabase: function (dbname, callback) {
-        if (!this._storageProvider)
-            this._storageProvider = ioc.get("storageProvider");
-        var dbStorageKey = dbname + this._lokiStorageKey;
-        this._storageProvider.fetch(dbStorageKey,
-            function (err, resp) {
-                if (err) {
-                    if (err === 'does-not-exist')
-                        return callback();
-                    return callback(err);
-                }
-                return callback(resp);
-            });
-    },
-    saveDatabase: function (dbname, dbstring, callback) {
-        var dbStorageKey = dbname + this._lokiStorageKey;
-        this._storageProvider.save(dbStorageKey,
-            dbstring,
-            function (err) {
-                if (err)
-                    return callback(err);
-                return callback();
-            });
-    }
-});

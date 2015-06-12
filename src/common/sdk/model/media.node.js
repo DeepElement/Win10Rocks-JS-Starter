@@ -1,6 +1,7 @@
 var classHelper = require('../helper/class.node');
 
 var _constructor = function (options) {
+	console.log('model:mediag:constructor');
 	this._key = options.key;
 	this._name = options.name;
 	this._contentType = options.contentType;

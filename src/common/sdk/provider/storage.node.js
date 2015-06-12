@@ -17,14 +17,14 @@ var members = {
 	fetch : function(key, callback){
 		// TODO: load a file from storage
 		if(this._memoryStore[key])
-			return this._memoryStore[key];
+			return callback(null, this._memoryStore[key]);
 		return callback('does-not-exist');
 	},
 	list: function(callback){
 		// TODO: implement listing of all files managed 	
 		return callback(null, this._memoryStore.map(function(a) {return a.key;}));
 	},
-	clear: function(callback){
+	clear: function(callback){g
 		// TODO: clear managed storage
 		this._memoryStore = {};
 		return callback();

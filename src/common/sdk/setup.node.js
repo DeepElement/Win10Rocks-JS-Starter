@@ -20,3 +20,5 @@ ioc.register("dataService", require('./service/data.node'), "application");
 ioc.register("navigationProvider", require('./provider/navigation.node'), "request");
 ioc.register("networkProvider", require('./provider/network.node'), "request");
 ioc.register("storageProvider", require('./provider/storage.node'), "request");
+ioc.register("catalogueProvider", require('./provider/catalogue.node'), "request");
+ioc.register("lokiStorageProvider", require('./provider/loki-storage.node'), "request");
