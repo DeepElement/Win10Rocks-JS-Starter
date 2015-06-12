@@ -9,5 +9,8 @@ module.exports = {
 	},
 	contributors: {
 		proto: require('./contributor.node')
+	},
+	feedSources: {
+		proto: require('./feed-source.node')
 	}
 };

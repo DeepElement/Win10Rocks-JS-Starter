@@ -4,9 +4,11 @@ var main = require('../main.node'),
     base = require('./base.node'),
     classHelper = require('../helper/class.node'),
     loki = require('lokijs'),
-    util = require('util');
+    util = require('util'),
+    feedSourceModel = require('../model/feed-source.node'),
+    eventModel = require('../model/event.node');
 
-var _constructor = function (options) {
+var _constructor = function(options) {
     this._lokiDBKey = "bdf6a7de-f243-4d42-8e91-e5c974b53051";
     this._hydrating = false;
     this._hydrationInterval = 5000;
@@ -14,91 +16,121 @@ var _constructor = function (options) {
 };
 
 var members = {
-    load: function (done) {
+    load: function(done) {
         var that = this;
         that._catalogueProvider = ioc.get("catalogueProvider");
-        base.prototype.load.call(this, function () {
+        base.prototype.load.call(this, function() {
             async.waterfall([
-                function (cb) {
-                    that._lokiAdapter = ioc.get("lokiStorageProvider");
-                    that._db = new loki(that._lokiDBKey, { adapter: that._lokiAdapter });
-                    that._db.loadDatabase(require('../model/mapping.node'),
-                        function (resp) {
-                            if (resp === 'Database not found')
-                                that._db.saveDatabase();
-                            return cb();
+                    function(cb) {
+                        that._lokiAdapter = ioc.get("lokiStorageProvider");
+                        that._db = new loki(that._lokiDBKey, {
+                            adapter: that._lokiAdapter
                         });
-                },
-                function (cb) {
-                    // Run the first iteration of data hydration
-                    that._hydrate(true, cb);
-                }
-            ],
-                function (err) {
+                        that._db.loadDatabase(require('../model/mapping.node'),
+                            function(resp) {
+                                if (resp === 'Database not found')
+                                    that._db.saveDatabase();
+                                return cb();
+                            });
+                    },
+                    function(cb) {
+                        // Run the first iteration of data hydration
+                        that._hydrate(true, cb);
+                    }
+                ],
+                function(err) {
                     if (err)
                         return done(err);
 
                     // schedule the hydrator
-                    that._hydrationTimer = that.setInterval(function () {
-                        that._hydrate(false, function () { });
+                    that._hydrationTimer = that.setInterval(function() {
+                        that._hydrate(false, function() {});
                     }, 5000);
                     return done();
                 });
         });
     },
 
-    _hydrate: function (isStartup, callback) {
+    _hydrate: function(isStartup, callback) {
         var that = this;
         if (!that._hydrating) {
             that._hydrating = true;
             async.waterfall([
-                function (cb) {
-                    that._catalogueProvider.fetchFeedConfig({}, function (err, resp) {
-                        if (err)
-                            return cb(err);
+                    function(cb) {
+                        that._catalogueProvider.fetchFeedConfig({}, function(err, resp) {
+                            if (err)
+                                return cb(err);
 
-                        that._db.addCollection("events");
-                        that._db.addCollection("contributors");
-                        that._db.addCollection("media");
+                            that._db.addCollection("events");
+                            that._db.addCollection("feedSources");
+                            that._db.addCollection("contributors");
+                            that._db.addCollection("media");
 
-                        // create events
-                        resp.events.forEach(function (e) {
-                            var item = that.eventCollection.findOne({ key: e.key });
-                            if (!item)
-                                that.eventCollection.insert(e);
+                            resp.events.forEach(function(e) {
+                                var feedSourceKeys = [];
+
+                                // create event feed sources
+                                e.feeds.forEach(function(f) {
+                                    var item = that.feedSourceCollection.findOne({
+                                        key: f
+                                    });
+                                    if (!item) {
+                                        item = that.feedSourceCollection.insert(new feedSourceModel({
+                                            key: f,
+                                            address: f
+                                        }));
+                                    }
+                                    feedSourceKeys.push(item.key);
+                                });
+
+                                // create event record
+                                var eventItem = that.eventCollection.findOne({
+                                    key: e.name
+                                });
+                                if (!eventItem)
+                                    eventItem = that.eventCollection.insert(new eventModel({
+                                        key: e.name,
+                                        name: e.name,
+                                        feedSources: feedSourceKeys
+                                    }));
+                            });
+                            return cb();
                         });
-                        return cb();
-                    });
-                }
-            ],
-                function (err) {
+                    }
+                ],
+                function(err) {
                     that._hydrating = false;
                     return callback(err);
                 });
-        }
-        else
+        } else
             return callback();
     },
 
     contributorCollection: {
-        get: function () {
+        get: function() {
             return this._db.getCollection("contributors");
         }
     },
 
     eventCollection: {
-        get: function () {
+        get: function() {
             return this._db.getCollection("events");
         }
     },
 
     mediaCollection: {
-        get: function () {
+        get: function() {
             return this._db.getCollection("media");
         }
     },
 
-    unload: function (done) {
+    feedSourceCollection: {
+        get: function() {
+            return this._db.getCollection("feedSources");
+        }
+    },
+
+    unload: function(done) {
         var that = this;
         if (that._hydrationTimer)
             that.clearTimeout(that._hydrationTimer);
