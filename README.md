@@ -13,6 +13,8 @@ Features:
 - Message-based Navigation Architecture (Data Posting, View/ViewModel Life-Cycle, BackStack)
 - Bring-Your-Own-UI (WinJS 4.0 included by default)
 
+[![Architecture](architecture.png)]
+
 #Setup
 - Install Visual Studio 2015 RC
 - Install Python 2.7.9 at https://www.python.org/downloads/release/python-279/
