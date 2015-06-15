@@ -58,7 +58,6 @@
     <Content Include="..\..\package.json">
       <Link>package.json</Link>
     </Content>
-    <None Include=".bin\node.cmd" />
     <Content Include="config\config.app.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
