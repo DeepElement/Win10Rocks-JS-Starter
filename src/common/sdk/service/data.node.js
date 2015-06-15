@@ -50,12 +50,16 @@ var members = {
 
     _loadDatabase: function (callback) {
         var that = this;
-        that._db.loadDatabase(require('../model/mapping.node'),
-            function (resp) {
-                if (resp === 'Database not found')
-                    that._db.saveDatabase();
-                return callback();
-            });
+        if (that._db) {
+            that._db.loadDatabase(require('../model/mapping.node'),
+                function (resp) {
+                    if (resp === 'Database not found')
+                        that._db.saveDatabase();
+                    return callback();
+                });
+        }
+        else
+            return callback();
     },
 
     _hydrate: function (isStartup, callback) {
@@ -98,14 +102,20 @@ var members = {
     pause: function (done) {
         var that = this;
         base.prototype.pause.call(this, function () {
-            that._db.saveDatabase(done);
+            if (that._db)
+                that._db.saveDatabase(done);
+            else
+                return done();
         });
     },
 
     resume: function (done) {
         var that = this;
         base.prototype.resume.call(this, function () {
-            that._loadDatabase(done);
+            if (that._db)
+                that._loadDatabase(done);
+            else
+                return done();
         });
     },
 
