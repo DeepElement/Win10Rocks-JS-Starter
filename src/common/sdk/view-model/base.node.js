@@ -1,5 +1,4 @@
-﻿var loggingProvider = require('../provider/logging.node'),
-    main = require("../main.node"),
+﻿var main = require("../main.node"),
     classHelper = require('../helper/class.node'),
     utilityHelper = require('../helper/utilities.node');
 

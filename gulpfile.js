@@ -4,7 +4,9 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     rimraf = require('rimraf'),
     runSequence = require('run-sequence'),
-    browserify = require('gulp-browserify');
+    browserify = require('gulp-browserify'),
+    docco = require("gulp-docco"),
+    folderToc = require("folder-toc");
 
 require('./build/gulp.universal');
 require('./build/gulp.win8.1');
@@ -36,9 +38,32 @@ gulp.task("build-windows-version", function () {
         .pipe(gulp.dest('./'));
 });
 
+
 gulp.task("browserify-compile", function () {
     return gulp.src('src/common/sdk/main.node.js')
         .pipe(browserify());
+});
+
+gulp.task("docs",
+    function (cb) {
+        runSequence("clean", "docs-docco", "docs-index", cb);
+    });
+
+gulp.task("docs-index", function (cb) {
+    folderToc("publish/docs",
+        {
+            name: 'index.html',
+            layout: 'classic',
+            filter: '*.html',
+            title: 'Docco Docs'
+        });
+    return cb();
+});
+
+gulp.task("docs-docco", function () {
+    return gulp.src(['src/common/**/*.js'])
+        .pipe(docco())
+        .pipe(gulp.dest('publish/docs'));
 });
 
 gulp.task("clean", function (cb) {

@@ -1,5 +1,4 @@
-﻿var loggingProvider = require('../provider/logging.node'),
-    baseViewModel = require('./base.node'),
+﻿var baseViewModel = require('./base.node'),
     relayCommand = require('../command/relay.node'),
     main = require("../main.node"),
     classHelper = require('../helper/class.node');
