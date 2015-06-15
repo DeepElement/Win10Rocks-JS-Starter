@@ -19,6 +19,7 @@
   "devDependencies": {
     "browserify": "^5.13.1",
     "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-mocha": "^2.1.1",
     "gulp-msbuild": "^0.2.11",
     "gulp-replace": "^0.5.3",

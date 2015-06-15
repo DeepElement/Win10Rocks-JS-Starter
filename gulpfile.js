@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     mocha = require("gulp-mocha"),
     replace = require('gulp-replace'),
     rimraf = require('rimraf'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    browserify = require('gulp-browserify');
 
 require('./build/gulp.universal');
 require('./build/gulp.win8.1');
@@ -13,9 +14,9 @@ var parseEnv = function () {
         version:
         {
             major: process.env.Version_Major || 0,
-            minor:  process.env.Version_Minor || 0,
-            revision:  process.env.Version_Revision || 0,
-            build:  process.env.Version_Build || 1,
+            minor: process.env.Version_Minor || 0,
+            revision: process.env.Version_Revision || 0,
+            build: process.env.Version_Build || 1,
         }
     };
 };
@@ -26,25 +27,30 @@ gulp.task('default', function () {
 
 gulp.task("build-windows-version", function () {
     var args = parseEnv();
-    var buildNum = args.version.major + "." 
-            + args.version.minor + "." 
-            + args.version.revision + "."
-            + args.version.build;
+    var buildNum = args.version.major + "."
+        + args.version.minor + "."
+        + args.version.revision + "."
+        + args.version.build;
     return gulp.src('./src/**/package.appxmanifest', { base: './' })
         .pipe(replace(/\sVersion=\"[^\"]+\"\s/, ' Version=\"' + buildNum + '\" '))
         .pipe(gulp.dest('./'));
+});
+
+gulp.task("browserify-compile", function () {
+    return gulp.src('src/common/sdk/main.node.js')
+        .pipe(browserify());
 });
 
 gulp.task("clean", function (cb) {
     rimraf('./publish', cb);
 });
 
-gulp.task("test", function () {
+gulp.task("test", ["browserify-compile"], function () {
     return gulp.src('test/**/*.js', { read: false })
         .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task("test-ci", function () {
+gulp.task("test-ci", ['browserify-compile'], function () {
     return gulp.src('test/**/*.js', { read: false })
         .pipe(mocha({ reporter: 'spec' }));
 });
