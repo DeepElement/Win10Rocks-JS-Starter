@@ -39,10 +39,10 @@ Prefix Gulp command with variable (e.g. `Version_Major=1 gulp build-win10`)
 
 - `gulp clean` 
 	- deletes ./publish
-- `gulp build-win10`
+- `gulp win10-build`
 	- Test package deployed at ./publish/win10/*_Test
 	- OneStore package at ./publish/win10/*.appxupload
-- `gulp build-win8.1`
+- `gulp win8.1-build`
 	- Test package deployed at ./publish/win8.1/*_Test
 	- OneStore package at ./publish/win8.1/*.appxupload
 

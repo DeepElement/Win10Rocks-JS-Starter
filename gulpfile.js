@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 require('./build/gulp.universal');
 require('./build/gulp.win8.1');
 
-var parseEnv = function () {
+exports.parseEnv = function () {
     return {
         version:
         {
@@ -26,18 +26,6 @@ var parseEnv = function () {
 gulp.task('default', function () {
     // place code for your default task here
 });
-
-gulp.task("build-windows-version", function () {
-    var args = parseEnv();
-    var buildNum = args.version.major + "."
-        + args.version.minor + "."
-        + args.version.revision + "."
-        + args.version.build;
-    return gulp.src('./src/**/package.appxmanifest', { base: './' })
-        .pipe(replace(/\sVersion=\"[^\"]+\"\s/, ' Version=\"' + buildNum + '\" '))
-        .pipe(gulp.dest('./'));
-});
-
 
 gulp.task("browserify-compile", function () {
     return gulp.src('src/common/sdk/main.node.js')
