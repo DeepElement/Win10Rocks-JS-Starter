@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 
 require('./build/gulp.universal');
 require('./build/gulp.win8.1');
+require('./build/gulp.web');
 
 exports.parseEnv = function () {
     return {
