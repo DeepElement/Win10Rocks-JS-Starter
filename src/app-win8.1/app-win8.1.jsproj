@@ -55,10 +55,13 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="app.js" />
     <Content Include="config\config.app.json" />
     <Content Include="config\config.development.json" />
     <Content Include="config\config.test.json" />
     <Content Include="default.html" />
+    <Content Include="platform.js" />
+    <Content Include="require.js" />
     <None Include="app-metro_TemporaryKey.pfx" />
     <Content Include="..\common\**\*">
       <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
