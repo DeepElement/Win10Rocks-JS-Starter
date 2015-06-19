@@ -50,6 +50,7 @@ gulp.task("web-deploy", function () {
 gulp.task("web-host", function () {
     return connect.server({
         root: './publish/web',
-        livereload: true
+        livereload: true,
+        fallback: './publish/web/default.html'
     });
 });
