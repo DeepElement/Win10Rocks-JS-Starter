@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     baseBuildFile = require('../gulpfile');
 
-
 gulp.task("win10-build", 
     function(cb){
        runSequence( "clean", "win10-version", "win10-package", "win10-deploy", cb); 

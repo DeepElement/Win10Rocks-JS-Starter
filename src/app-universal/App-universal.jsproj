@@ -58,6 +58,7 @@
     <Content Include="..\..\package.json">
       <Link>package.json</Link>
     </Content>
+    <Content Include="app.js" />
     <Content Include="config\config.app.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -65,6 +66,8 @@
     <Content Include="config\config.test.json" />
     <Content Include="default.html" />
     <Content Include="packages.config" />
+    <Content Include="platform.js" />
+    <Content Include="require.js" />
     <None Include="Win10Rocks-JS-Starter-App_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

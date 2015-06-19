@@ -45,6 +45,9 @@ Prefix Gulp command with variable (e.g. `Version_Major=1 gulp build-win10`)
 - `gulp win8.1-build`
 	- Test package deployed at ./publish/win8.1/*_Test
 	- OneStore package at ./publish/win8.1/*.appxupload
+- `gulp web-build`
+	- Web root distributed to ./publish/web
+	- Run local development host with `gulp web-host`
 
 #Known Issues
 
