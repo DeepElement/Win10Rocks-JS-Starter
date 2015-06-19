@@ -6,8 +6,10 @@
     var nav = WinJS.Navigation;
     var sched = WinJS.Utilities.Scheduler;
     var ui = WinJS.UI;
+    var hasActivated = false;
 
-    app.addEventListener("activated", function (args) {
+    var activationHandler = function (args) {
+        hasActivated = true;
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
@@ -41,7 +43,9 @@
 
             args.setPromise(p);
         }
-    });
+    };
+
+    app.addEventListener("activated", activationHandler);
 
     app.oncheckpoint = function (args) {
         // TODO: This application is about to be suspended. Save any state
@@ -68,4 +72,15 @@
     };
 
     app.start();
+
+    setTimeout(function () {
+        if(!hasActivated)
+            activationHandler({
+                detail: {
+                    kind: activation.ActivationKind.launch,
+                    previousExecutionState: activation.ApplicationExecutionState.notRunning
+                },
+                setPromise: function () { }
+            });
+    }, 2000);
 })();
