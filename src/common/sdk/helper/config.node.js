@@ -72,7 +72,15 @@ exports.loadFile = function (path, callback) {
     try {
         if (path.indexOf("ms-appx://") > -1) {
             var networkProvider = ioc.get("networkProvider");
-            networkProvider.get(path, callback);
+            networkProvider.get(path, function (err, resp) {
+                if (err) {
+                    networkProvider.get(path.replace("ms-appx://", 
+                        location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')), 
+                        callback);
+                }
+                else
+                    return callback(null, resp);
+            });
         } else {
             var response = require(path);
             return callback(null, response);

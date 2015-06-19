@@ -10,7 +10,7 @@ function RelayCommand(payload, key) {
     _self.execute = function () {
         return _self._internalExecute.apply(_self, arguments);
     };
-    _self.execute.supportedForProcessing = true;
+    WinJS.Utilities.markSupportedForProcessing(_self.execute);
     _self.canExecute = true;
 }
 

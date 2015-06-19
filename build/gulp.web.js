@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
     runSequence = require('run-sequence'),
-    browserify = require('gulp-browserify'),
+    browserify = require('browserify'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
     path = require("path"),
     glob = require("glob"),
+    source = require('vinyl-source-stream'),
     MetroNode = require('metronode');
 
 gulp.task("web-build",
@@ -19,7 +20,7 @@ gulp.task("web-metronode-compile", function (cb) {
     glob(path.join(sourcePath + "/**/*.js"), function (err, files) {
         if (err)
             return cb(err);
-            
+
         var instance = new MetroNode({
             sourceRoot: path.join(__dirname, '..', 'src', 'common'),
             env: process.env,
@@ -32,16 +33,17 @@ gulp.task("web-metronode-compile", function (cb) {
 
 
 gulp.task("web-browserify-compile", function () {
-    return gulp.src('./publish/web/.metro.node.cache.js')
-        .pipe(browserify({
+    var b = browserify({
+        entries: './publish/web/.metro.node.cache.js',
         standalone: "MetroNode"
-    }))
-        .pipe(rename('.metro.node.js'))
-        .pipe(gulp.dest('./publish/web'));
+    });
+    return b.bundle()
+        .pipe(source('metro.node.js'))
+        .pipe(gulp.dest('./publish/web/'));
 });
 
 gulp.task("web-deploy", function () {
-    return gulp.src(['./src/app-web/**/*', './src/ui-winjs/**/*'])
+    return gulp.src(['./src/app-web/**', './src/ui-winjs/**'])
         .pipe(gulp.dest('./publish/web'));
 });
 
